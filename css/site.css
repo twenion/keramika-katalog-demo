@@ -2046,8 +2046,10 @@ textarea.input {
 
 @media (max-width: 960px) {
   .specimen-stage,
-  .calc-wa-grid { grid-template-columns: 1fr; }
+  .calc-wa-grid { grid-template-columns: minmax(0, 1fr); }
   .specimen-stage__plate { border-right: 0; border-bottom: 1px solid var(--grout-strong); min-height: 280px; }
+  .specimen-stage__plate .tile-slab__plate { max-width: 100%; }
+  .specimen-stage__plate .specimen-ruler { max-width: 100%; }
   .viz-stage { aspect-ratio: 4 / 3; min-height: 280px; }
 }
 
