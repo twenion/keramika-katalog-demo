@@ -3,15 +3,26 @@ import { sizeLabel } from "../core/catalog.js";
 import { loc } from "./data.js";
 import { getTileDrawable } from "./textures.js";
 
-/**
- * Draw a textured triangle via affine transform — accurate and crisp for perspective quads.
- */
-function drawTexturedTriangle(ctx, img, x0, y0, x1, y1, x2, y2, u0, v0, u1, v1, u2, v2) {
+function drawTexturedTriangle(ctx, img, x0, y0, x1, y1, x2, y2, u0, v0, u1, v1, u2, v2, padHypot = false) {
   ctx.save();
   ctx.beginPath();
-  ctx.moveTo(x0, y0);
-  ctx.lineTo(x1, y1);
-  ctx.lineTo(x2, y2);
+  if (padHypot) {
+    const dx = x2 - x0;
+    const dy = y2 - y0;
+    const len = Math.hypot(dx, dy) || 1;
+    let nx = -dy / len;
+    let ny = dx / len;
+    // Push shared diagonal edge (p0-p2) outward by 0.6px away from p1 to eliminate canvas clip hairline
+    if ((x1 - x0) * nx + (y1 - y0) * ny > 0) { nx = -nx; ny = -ny; }
+    const pad = 0.6;
+    ctx.moveTo(x0 + nx * pad, y0 + ny * pad);
+    ctx.lineTo(x1, y1);
+    ctx.lineTo(x2 + nx * pad, y2 + ny * pad);
+  } else {
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x1, y1);
+    ctx.lineTo(x2, y2);
+  }
   ctx.closePath();
   ctx.clip();
 
@@ -32,14 +43,107 @@ function drawTexturedTriangle(ctx, img, x0, y0, x1, y1, x2, y2, u0, v0, u1, v1, 
   ctx.restore();
 }
 
-export function drawTexturedQuad(ctx, img, p0, p1, p2, p3, rot90 = false) {
+export function drawTexturedQuad(ctx, img, p0, p1, p2, p3, opts = false) {
+  const rot90 = typeof opts === "boolean" ? opts : Boolean(opts?.rot90);
+  const aspect = typeof opts === "object" && opts?.aspect ? opts.aspect : 1;
+  const variant = typeof opts === "object" && Number.isFinite(opts?.variant) ? opts.variant : 0.5;
+
   const iw = img.naturalWidth || img.width || 256;
   const ih = img.naturalHeight || img.height || 256;
+  const imgRatio = iw / ih;
+
+  let uMin = 0, uMax = iw, vMin = 0, vMax = ih;
+  if (aspect < imgRatio * 0.99) {
+    const cropW = ih * aspect;
+    uMin = (iw - cropW) * variant;
+    uMax = uMin + cropW;
+  } else if (aspect > imgRatio * 1.01) {
+    const cropH = iw / aspect;
+    vMin = (ih - cropH) * variant;
+    vMax = vMin + cropH;
+  }
+
   const uv = rot90
-    ? [[0, ih], [0, 0], [iw, 0], [iw, ih]]
-    : [[0, 0], [iw, 0], [iw, ih], [0, ih]];
-  drawTexturedTriangle(ctx, img, p0.x, p0.y, p1.x, p1.y, p2.x, p2.y, uv[0][0], uv[0][1], uv[1][0], uv[1][1], uv[2][0], uv[2][1]);
-  drawTexturedTriangle(ctx, img, p0.x, p0.y, p2.x, p2.y, p3.x, p3.y, uv[0][0], uv[0][1], uv[2][0], uv[2][1], uv[3][0], uv[3][1]);
+    ? [[uMin, vMax], [uMin, vMin], [uMax, vMin], [uMax, vMax]]
+    : [[uMin, vMin], [uMax, vMin], [uMax, vMax], [uMin, vMax]];
+
+  drawTexturedTriangle(ctx, img, p0.x, p0.y, p1.x, p1.y, p2.x, p2.y, uv[0][0], uv[0][1], uv[1][0], uv[1][1], uv[2][0], uv[2][1], false);
+  drawTexturedTriangle(ctx, img, p0.x, p0.y, p3.x, p3.y, p2.x, p2.y, uv[0][0], uv[0][1], uv[3][0], uv[3][1], uv[2][0], uv[2][1], true);
+}
+
+// Exact non-overlapping 45-degree herringbone lattice for any rectangular tile
+export function generateHerringboneQuads({ wM, hM, gap, minU, maxU, minV, maxV, vOffset = 0 }) {
+  const L = Math.max(wM, hM);
+  const S = Math.min(wM, hM);
+  const portrait = wM < hM;
+  const Lp = L + gap;
+  const Sp = S + gap;
+  const cos = Math.SQRT1_2;
+  const sin = Math.SQRT1_2;
+
+  const toPlane = (u, v) => ({
+    u: u * cos - v * sin,
+    v: u * sin + v * cos + vOffset,
+  });
+
+  const stepU = Lp * Math.SQRT2;
+  const stepV = Sp * Math.SQRT2;
+  const margin = L + S;
+  const nMin = Math.floor((minU - margin) / stepU) - 1;
+  const nMax = Math.ceil((maxU + margin) / stepU) + 1;
+  const kMin = Math.floor((minV - vOffset - margin) / stepV) - 1;
+  const kMax = Math.ceil((maxV - vOffset + margin) / stepV) + 1;
+
+  const quads = [];
+  for (let k = kMin; k <= kMax; k++) {
+    for (let n = nMin; n <= nMax; n++) {
+      const bu = k * Sp + n * Lp;
+      const bv = k * Sp - n * Lp;
+
+      // Plank H(k, n): length L along +u, width S along +v
+      const hPts = [
+        toPlane(bu, bv),
+        toPlane(bu + L, bv),
+        toPlane(bu + L, bv + S),
+        toPlane(bu, bv + S),
+      ];
+      const hCu = (hPts[0].u + hPts[1].u + hPts[2].u + hPts[3].u) * 0.25;
+      const hCv = (hPts[0].v + hPts[1].v + hPts[2].v + hPts[3].v) * 0.25;
+      if (hCv >= minV - L && hCv <= maxV + L && hCu >= minU - L && hCu <= maxU + L) {
+        quads.push({
+          pts: hPts,
+          cu: hCu,
+          cv: hCv,
+          rot90: portrait,
+          variant: ((Math.abs(k * 37 + n * 17) % 11) + 0.5) / 11,
+          tone: ((Math.abs(k * 7 + n * 13) % 5) - 2) * 0.016,
+        });
+      }
+
+      // Plank V(k, n): width S along +u, length L along +v
+      const vu = bu + Lp;
+      const vv = bv + Sp - Lp;
+      const vPts = [
+        toPlane(vu, vv),
+        toPlane(vu + S, vv),
+        toPlane(vu + S, vv + L),
+        toPlane(vu, vv + L),
+      ];
+      const vCu = (vPts[0].u + vPts[1].u + vPts[2].u + vPts[3].u) * 0.25;
+      const vCv = (vPts[0].v + vPts[1].v + vPts[2].v + vPts[3].v) * 0.25;
+      if (vCv >= minV - L && vCv <= maxV + L && vCu >= minU - L && vCu <= maxU + L) {
+        quads.push({
+          pts: vPts,
+          cu: vCu,
+          cv: vCv,
+          rot90: !portrait,
+          variant: ((Math.abs(k * 23 + n * 41 + 5) % 11) + 0.5) / 11,
+          tone: ((Math.abs(k * 11 + n * 19 + 3) % 5) - 2) * 0.016,
+        });
+      }
+    }
+  }
+  return quads;
 }
 
 function easeOutCubic(x) {
@@ -47,77 +151,63 @@ function easeOutCubic(x) {
 }
 
 /**
- * Build world-space tile quads (in metres on the floor plane X ∈ [-3.2, 3.2], Z ∈ [0.8, 7.6])
- * respecting each tile's authentic physical dimensions & laying pattern (hörgü).
+ * Build world-space tile quads (in metres on the floor plane X ∈ [-6, 6], Z ∈ [0.85, 8.6])
+ * preserving exact physical tile aspect ratio (uniform scaling only when needed).
  */
 function generatePatternTiles(product, pattern) {
-  const wM = Math.max(0.08, (Number(product?.size?.w) || 60) / 100);
-  const hM = Math.max(0.08, (Number(product?.size?.h) || 60) / 100);
-  // Scale very small wall tiles gently so individual pieces remain legible on perspective floor/wall
-  const visualBoost = Math.max(wM, hM) < 0.35 ? 1.85 : 1.0;
-  const tw = wM * visualBoost;
-  const th = hM * visualBoost;
-  const gap = 0.012;
+  const rawW = (Number(product?.size?.w) || 60) / 100;
+  const rawH = (Number(product?.size?.h) || 60) / 100;
+  const aspect = rawW / rawH;
+  // Scale small tiles uniformly so individual pieces stay legible without ever altering w:h ratio
+  const visualBoost = Math.max(rawW, rawH) < 0.35 ? 1.85 : 1.0;
+  const tw = rawW * visualBoost;
+  const th = rawH * visualBoost;
+  const gap = 0.009;
 
   const tiles = [];
 
   if (pattern === "herringbone") {
-    // Interlocking 45-degree rotated herringbone plank lattice
-    const L = Math.max(tw, th);
-    const S = Math.min(tw, th);
-    const unit = S + gap;
-    const cols = 10;
-    const rows = 9;
-    const cos = Math.SQRT1_2;
-    const sin = Math.SQRT1_2;
-    const toWorld = (u, v) => ({
-      x: (u * cos - v * sin) * 0.92,
-      z: (u * sin + v * cos) * 0.92 + 3.6,
+    const hb = generateHerringboneQuads({
+      wM: tw,
+      hM: th,
+      gap,
+      minU: -5.4,
+      maxU: 5.4,
+      minV: 0.75,
+      maxV: 8.4,
+      vOffset: 3.4,
     });
-
-    for (let r = -rows; r <= rows; r++) {
-      for (let c = -cols; c <= cols; c++) {
-        // Classic herringbone step: alternate horizontal and vertical planks along diagonals
-        const step = Math.max(2, Math.round(L / unit));
-        if ((c + r) % 2 !== 0) continue;
-        const u0 = c * unit;
-        const v0 = r * unit;
-        const horiz = ((c - r) / 2) % 2 === 0;
-        const du = horiz ? L - gap : S - gap;
-        const dv = horiz ? S - gap : L - gap;
-        const p0 = toWorld(u0, v0);
-        const p1 = toWorld(u0 + du, v0);
-        const p2 = toWorld(u0 + du, v0 + dv);
-        const p3 = toWorld(u0, v0 + dv);
-        const cz = (p0.z + p1.z + p2.z + p3.z) / 4;
-        const cx = (p0.x + p1.x + p2.x + p3.x) / 4;
-        if (cz < 0.7 || cz > 7.4 || Math.abs(cx) > 4.4) continue;
-        tiles.push({
-          pts: [p0, p1, p2, p3],
-          cx,
-          cz,
-          rot90: !horiz,
-          tone: ((Math.abs(c * 7 + r * 13) % 5) - 2) * 0.025,
-          order: cz * 0.65 + (cx + 4.4) * 0.25,
-        });
-      }
+    for (const q of hb) {
+      const pts = q.pts.map((p) => ({ x: p.u, z: p.v }));
+      const minZ = Math.min(pts[0].z, pts[1].z, pts[2].z, pts[3].z);
+      if (minZ < 0.15 || q.cv > 8.6) continue;
+      tiles.push({
+        pts,
+        cx: q.cu,
+        cz: q.cv,
+        rot90: q.rot90,
+        aspect,
+        variant: q.variant,
+        tone: q.tone,
+        order: q.cv * 0.65 + (q.cu + 5.4) * 0.25,
+      });
     }
   } else {
-    // Straight grid, Half-offset running bond, or Metlax center-out rosette
-    const tileW = pattern === "offset" ? Math.max(tw, th) : tw;
-    const tileH = pattern === "offset" ? Math.min(tw, th) : th;
+    const isHorizOffset = pattern === "offset" && tw < th;
+    const tileW = isHorizOffset ? th : tw;
+    const tileH = isHorizOffset ? tw : th;
     const stepX = tileW + gap;
     const stepZ = tileH + gap;
-    const nX = Math.ceil(6.6 / stepX);
+    const nX = Math.ceil(6.4 / stepX);
     const nZ = Math.ceil(8.4 / stepZ);
 
     for (let rz = 0; rz <= nZ; rz++) {
-      const z0 = 0.7 + rz * stepZ;
+      const z0 = 0.85 + rz * stepZ;
       if (z0 > 9.4) break;
       const offsetX = pattern === "offset" && (rz % 2 === 1) ? stepX * 0.5 : 0;
       for (let cxIdx = -nX; cxIdx <= nX; cxIdx++) {
         const x0 = cxIdx * stepX + offsetX - stepX * 0.5;
-        if (x0 + tileW < -6.6 || x0 > 6.6) continue;
+        if (x0 + tileW < -6.4 || x0 > 6.4) continue;
         const p0 = { x: x0, z: z0 };
         const p1 = { x: x0 + tileW, z: z0 };
         const p2 = { x: x0 + tileW, z: z0 + tileH };
@@ -126,26 +216,25 @@ function generatePatternTiles(product, pattern) {
         const cz = z0 + tileH * 0.5;
         let order;
         if (pattern === "metlax") {
-          // Center-outward radial rosette so 4-tile patterns snap together cleanly
           order = Math.hypot(cx * 0.85, (cz - 2.9) * 1.05);
         } else {
-          // Diagonal mason laying wave from front-left toward back-right
-          order = (cz - 0.8) * 0.55 + (cx + 4.2) * 0.38;
+          order = (cz - 0.85) * 0.55 + (cx + 4.4) * 0.38;
         }
         tiles.push({
           pts: [p0, p1, p2, p3],
           cx,
           cz,
-          rot90: pattern === "offset" && tw < th,
-          tone: ((Math.abs(cxIdx * 11 + rz * 17) % 5) - 2) * 0.022,
+          rot90: isHorizOffset,
+          aspect,
+          variant: ((Math.abs(cxIdx * 29 + rz * 13) % 11) + 0.5) / 11,
+          tone: ((Math.abs(cxIdx * 11 + rz * 17) % 5) - 2) * 0.015,
           order,
         });
       }
     }
   }
 
-  // Sort back-to-front (painter's algorithm) for crisp 3D settling overlap, while keeping normalized laying delay
-  const orders = tiles.map((t) => t.order);
+  const orders = tiles.map((item) => item.order);
   const minO = Math.min(...orders, 0);
   const maxO = Math.max(...orders, 1);
   const span = Math.max(0.001, maxO - minO);
@@ -165,10 +254,10 @@ export function initHeroHorgu({ canvas, tabsEl, readoutEl, products, meta }) {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const sequenceSpec = [
-    { id: "xezer-mermer", pattern: "straight", layoutKey: "visualizer.layout.straight", grout: "#DDD7CC" },
-    { id: "buta",         pattern: "metlax",   layoutKey: "visualizer.layout.straight", grout: "#C8BFB0" },
-    { id: "palid-taxta",  pattern: "herringbone", layoutKey: "visualizer.layout.herringbone", grout: "#6B5642" },
-    { id: "zeytun",       pattern: "offset",   layoutKey: "visualizer.layout.offset",   grout: "#DCD6CA" },
+    { id: "xezer-mermer", pattern: "straight",    layoutKey: "visualizer.layout.straight",    grout: "#E2DDD4" },
+    { id: "buta",         pattern: "metlax",      layoutKey: "visualizer.layout.straight",    grout: "#CFC6B8" },
+    { id: "palid-taxta",  pattern: "herringbone", layoutKey: "visualizer.layout.herringbone", grout: "#856E57" },
+    { id: "zeytun",       pattern: "offset",      layoutKey: "visualizer.layout.offset",      grout: "#DFD9CE" },
   ];
 
   const chapters = sequenceSpec.map((spec) => {
@@ -181,7 +270,6 @@ export function initHeroHorgu({ canvas, tabsEl, readoutEl, products, meta }) {
     };
   });
 
-  // Preload textures (real WebP when present, procedural fallback otherwise)
   chapters.forEach((ch) => {
     getTileDrawable(ch.product, meta, { small: false }).then((img) => {
       ch.drawable = img;
@@ -190,11 +278,10 @@ export function initHeroHorgu({ canvas, tabsEl, readoutEl, products, meta }) {
   });
 
   let activeIdx = 0;
-  let chapterStart = performance.now() - 1900;
+  let chapterStart = performance.now() - 2400;
   let isVisible = true;
   let rafId = 0;
 
-  // Timings (ms)
   const LAY_MS = 3800;
   const GROUT_MS = 950;
   const HOLD_MS = 2300;
@@ -253,13 +340,13 @@ export function initHeroHorgu({ canvas, tabsEl, readoutEl, products, meta }) {
 
   // Perspective camera projecting floor (x, y_lift, z) -> canvas (sx, sy)
   function makeProjector(W, H) {
-    const camY = 1.65;
-    const camZ = -0.35;
-    const focal = Math.min(W, H) * 1.08;
-    const horizonY = H * 0.27;
+    const camY = 1.72;
+    const camZ = -0.55;
+    const focal = Math.min(W, H) * 1.12;
+    const horizonY = H * 0.28;
     const cx = W * 0.5;
     return (x, y, z) => {
-      const dz = Math.max(0.25, z - camZ);
+      const dz = Math.max(0.35, z - camZ);
       const scale = focal / dz;
       return {
         x: cx + x * scale,
@@ -287,34 +374,32 @@ export function initHeroHorgu({ canvas, tabsEl, readoutEl, products, meta }) {
     const fillEl = tabsEl.querySelector(`[data-fill="${activeIdx}"]`);
     if (fillEl) fillEl.style.width = `${(totalProgress * 100).toFixed(1)}%`;
 
-    // Architectural warm charcoal mortar substrate
+    // Charcoal studio backdrop behind hero headline & floor horizon
     const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
-    bgGrad.addColorStop(0, "#1D1B19");
-    bgGrad.addColorStop(0.28, "#262320");
-    bgGrad.addColorStop(1, "#332E29");
+    bgGrad.addColorStop(0, "#1C1A18");
+    bgGrad.addColorStop(0.32, "#24211E");
+    bgGrad.addColorStop(1, "#302C28");
     ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, W, H);
 
     const project = makeProjector(W, H);
 
     // Subtle mortar trowel comb lines on empty bed before tiles land
-    ctx.strokeStyle = "rgba(235, 228, 216, 0.05)";
+    ctx.strokeStyle = "rgba(235, 228, 216, 0.055)";
     ctx.lineWidth = Math.max(1, W / 1100);
-    for (let z = 1.0; z <= 7.2; z += 0.35) {
-      const a = project(-4.6, 0, z);
-      const b = project(4.6, 0, z);
+    for (let z = 1.0; z <= 7.8; z += 0.35) {
+      const a = project(-5.2, 0, z);
+      const b = project(5.2, 0, z);
       ctx.beginPath();
       ctx.moveTo(a.x, a.y);
       ctx.lineTo(b.x, b.y);
       ctx.stroke();
     }
 
-    // Grout phase alpha (draws crisp mortar joints after tiles seat)
-    const groutAlpha = reducedMotion
-      ? 0.92
-      : Math.max(0, Math.min(1, (elapsed - LAY_MS * 0.72) / GROUT_MS));
+    const groutPhase = reducedMotion
+      ? 1
+      : Math.max(0, Math.min(1, (elapsed - LAY_MS * 0.55) / GROUT_MS));
 
-    // Fade-out slightly at the very end of hold for smooth transition to next material
     const fadeOut = reducedMotion
       ? 1
       : elapsed > TOTAL_MS - 420
@@ -329,16 +414,15 @@ export function initHeroHorgu({ canvas, tabsEl, readoutEl, products, meta }) {
 
     for (let i = 0; i < ch.tiles.length; i++) {
       const tile = ch.tiles[i];
-      const localT = reducedMotion ? 1 : (layNorm - tile.delay * 0.74) / 0.26;
+      const localT = reducedMotion ? 1 : (layNorm - tile.delay * 0.72) / 0.28;
       if (localT <= 0) continue;
 
       const settled = easeOutCubic(Math.min(1, localT));
-      const lift = (1 - settled) * 0.24;
+      const lift = (1 - settled) * 0.22;
 
-      // Ground contact shadow while tile is descending
       if (lift > 0.004) {
         const sp = tile.pts.map((pt) => project(pt.x, 0, pt.z));
-        ctx.fillStyle = `rgba(12, 10, 8, ${(0.34 * settled).toFixed(3)})`;
+        ctx.fillStyle = `rgba(12, 10, 8, ${(0.28 * settled).toFixed(3)})`;
         ctx.beginPath();
         ctx.moveTo(sp[0].x, sp[0].y);
         ctx.lineTo(sp[1].x, sp[1].y);
@@ -350,10 +434,9 @@ export function initHeroHorgu({ canvas, tabsEl, readoutEl, products, meta }) {
 
       const qp = tile.pts.map((pt) => project(pt.x, lift, pt.z));
 
-      // Draw ceramic body thickness lip on front edge while descending
       if (lift > 0.008) {
-        const lipH = Math.max(2, qp[0].scale * 0.016);
-        ctx.fillStyle = "#5B534A";
+        const lipH = Math.max(2, qp[0].scale * 0.015);
+        ctx.fillStyle = "#6A6258";
         ctx.beginPath();
         ctx.moveTo(qp[0].x, qp[0].y);
         ctx.lineTo(qp[1].x, qp[1].y);
@@ -364,9 +447,13 @@ export function initHeroHorgu({ canvas, tabsEl, readoutEl, products, meta }) {
       }
 
       if (img) {
-        drawTexturedQuad(ctx, img, qp[0], qp[1], qp[2], qp[3], tile.rot90);
+        drawTexturedQuad(ctx, img, qp[0], qp[1], qp[2], qp[3], {
+          rot90: tile.rot90,
+          aspect: tile.aspect,
+          variant: tile.variant,
+        });
       } else {
-        ctx.fillStyle = "#9C9488";
+        ctx.fillStyle = "#B5AEA2";
         ctx.beginPath();
         ctx.moveTo(qp[0].x, qp[0].y);
         ctx.lineTo(qp[1].x, qp[1].y);
@@ -376,9 +463,9 @@ export function initHeroHorgu({ canvas, tabsEl, readoutEl, products, meta }) {
         ctx.fill();
       }
 
-      // Subtle per-tile tonal variation + atmospheric depth lighting
-      const depthShade = Math.max(0, Math.min(0.45, (tile.cz - 2.4) / 7.5));
-      if (tile.tone !== 0 || depthShade > 0.01) {
+      // Preserve authentic tile colour & luminance: only subtle far-horizon depth cue beyond 4.8m
+      const farShade = Math.max(0, Math.min(0.14, (tile.cz - 4.8) / 8.5));
+      if (tile.tone !== 0 || farShade > 0.008) {
         ctx.beginPath();
         ctx.moveTo(qp[0].x, qp[0].y);
         ctx.lineTo(qp[1].x, qp[1].y);
@@ -386,18 +473,22 @@ export function initHeroHorgu({ canvas, tabsEl, readoutEl, products, meta }) {
         ctx.lineTo(qp[3].x, qp[3].y);
         ctx.closePath();
         if (tile.tone > 0) {
-          ctx.fillStyle = `rgba(255,250,242,${tile.tone.toFixed(3)})`;
+          ctx.fillStyle = `rgba(255,253,248,${tile.tone.toFixed(3)})`;
           ctx.fill();
         }
-        ctx.fillStyle = `rgba(20,18,16,${(depthShade + Math.max(0, -tile.tone)).toFixed(3)})`;
-        ctx.fill();
+        const darkAmt = farShade + Math.max(0, -tile.tone);
+        if (darkAmt > 0.005) {
+          ctx.fillStyle = `rgba(24,22,20,${darkAmt.toFixed(3)})`;
+          ctx.fill();
+        }
       }
 
-      // Animated grout seam drawn cleanly along tile perimeter once seated
-      if (groutAlpha > 0.02 && settled > 0.92) {
+      // Crisp grout seam once tile seats so gaps read as mortar rather than dark charcoal trenches
+      const tileGrout = settled > 0.88 ? Math.max(0.55, groutPhase) : 0;
+      if (tileGrout > 0.02) {
         ctx.strokeStyle = ch.grout;
-        ctx.globalAlpha = fadeOut * groutAlpha * 0.72;
-        ctx.lineWidth = Math.max(1, qp[0].scale * 0.0085);
+        ctx.globalAlpha = fadeOut * tileGrout * 0.88;
+        ctx.lineWidth = Math.max(1.1, qp[0].scale * 0.0095);
         ctx.beginPath();
         ctx.moveTo(qp[0].x, qp[0].y);
         ctx.lineTo(qp[1].x, qp[1].y);
@@ -411,12 +502,13 @@ export function initHeroHorgu({ canvas, tabsEl, readoutEl, products, meta }) {
 
     ctx.restore();
 
-    // Soft showroom raking window highlight from upper right
-    const light = ctx.createRadialGradient(W * 0.82, H * 0.22, 10, W * 0.72, H * 0.36, W * 0.68);
-    light.addColorStop(0, "rgba(255, 246, 232, 0.14)");
-    light.addColorStop(1, "rgba(255, 246, 232, 0)");
-    ctx.fillStyle = light;
-    ctx.fillRect(0, 0, W, H);
+    // Soft showroom gallery daylight lift across the floor plane (keeps upper charcoal backdrop crisp)
+    const floorGlow = ctx.createRadialGradient(W * 0.58, H * 0.62, 16, W * 0.52, H * 0.64, W * 0.56);
+    floorGlow.addColorStop(0, "rgba(255, 252, 245, 0.10)");
+    floorGlow.addColorStop(0.65, "rgba(255, 250, 242, 0.04)");
+    floorGlow.addColorStop(1, "rgba(255, 250, 242, 0)");
+    ctx.fillStyle = floorGlow;
+    ctx.fillRect(0, H * 0.36, W, H * 0.64);
   }
 
   function loop(now) {

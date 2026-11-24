@@ -299,7 +299,7 @@ function buildProductCard(product, idx, total, lang) {
   a.dataset.pid = product.id;
   a.href = pageUrl("mehsul/index.html", { id: product.id }, lang);
 
-  const dims = tilePlateDimensions(product, isLargeSlab ? 220 : 165, isLargeSlab ? 195 : 175);
+  const dims = tilePlateDimensions(product, isLargeSlab ? 216 : 168, isLargeSlab ? 204 : 180);
 
   const tray = document.createElement("div");
   tray.className = "tile-card__tray";
@@ -307,7 +307,7 @@ function buildProductCard(product, idx, total, lang) {
   const plate = document.createElement("div");
   plate.className = "tile-slab__plate";
   plate.style.width = `${dims.width}px`;
-  plate.style.height = `${dims.height}px`;
+  plate.style.aspectRatio = `${product.size.w} / ${product.size.h}`;
   plate.style.setProperty("--tile-bg", primaryHex(catalogue, product));
 
   const img = document.createElement("img");

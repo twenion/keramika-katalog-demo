@@ -495,7 +495,7 @@ ul, ol { padding: 0; list-style: none; }
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(24, 22, 20, 0.78) 0%, rgba(24, 22, 20, 0.24) 44%, rgba(24, 22, 20, 0.14) 68%, rgba(24, 22, 20, 0.86) 100%);
+    linear-gradient(180deg, rgba(24, 22, 20, 0.72) 0%, rgba(24, 22, 20, 0.42) 26%, rgba(24, 22, 20, 0) 42%, rgba(24, 22, 20, 0) 86%, rgba(24, 22, 20, 0.34) 100%);
 }
 
 .hero-horgu__content {
@@ -932,6 +932,8 @@ ul, ol { padding: 0; list-style: none; }
 
 .tile-slab__plate {
   position: relative;
+  max-width: 100%;
+  max-height: 100%;
   background: var(--tile-bg, #9c958a);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.28) inset,
@@ -1981,7 +1983,17 @@ textarea.input {
   color: var(--surface);
 }
 .seg-btn:disabled {
-  opacity: 0.38;
+  opacity: 0.46;
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(28, 27, 25, 0.42);
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 4px,
+    rgba(28, 27, 25, 0.06) 4px,
+    rgba(28, 27, 25, 0.06) 8px
+  );
   cursor: not-allowed;
 }
 

@@ -113,7 +113,7 @@ export async function getTileDrawable(product, meta, { small = false } = {}) {
 
 export function mountTileImg(imgEl, product, meta, { small = false, eager = false, alt = "" } = {}) {
   imgEl.alt = alt;
-  imgEl.decoding = "async";
+  imgEl.decoding = eager ? "sync" : "async";
   if (small && !eager) imgEl.loading = "lazy";
 
   const fallbackUrl = () => buildProceduralTile(product, meta, small ? 220 : 320).toDataURL("image/png");

@@ -45,7 +45,6 @@ function relatedProducts(current, all) {
 
 function renderNotFound(lang) {
   document.title = `${t("product.notFound.title", lang)} — ${t("site.name", lang)}`;
-  $("jump-viz").hidden = true;
   $("back-link").href = pageUrl("katalog/index.html", {}, lang);
   $("back-link").innerHTML = `${icons.arrowLeft} <span>${t("product.back", lang)}</span>`;
 
@@ -112,10 +111,8 @@ function renderProduct(lang) {
 
   $("back-link").href = pageUrl("katalog/index.html", {}, lang);
   $("back-link").innerHTML = `${icons.arrowLeft} <span>${t("product.back", lang)}</span>`;
-  $("jump-viz").hidden = false;
-  $("jump-viz").textContent = t("visualizer.title", lang);
 
-  const dims = tilePlateDimensions(product, 340, 340);
+  const dims = tilePlateDimensions(product, 360, 360);
   const colorsHtml = (product.colors || []).map((cid) => {
     const c = colorItem(catalogue, cid);
     return `<span style="display:inline-flex;align-items:center;gap:6px;margin-right:10px;"><span class="color-chip__dot" style="background:${c.hex};"></span>${loc(c.name, lang)}</span>`;
@@ -155,7 +152,7 @@ function renderProduct(lang) {
       <div class="specimen-stage__plate">
         <div class="specimen-ruler">
           <div class="specimen-ruler__dim">${product.size.w} × ${product.size.h} ${t("unit.cm", lang)}</div>
-          <div class="tile-slab__plate" id="main-tile-plate" style="width:${dims.width}px;height:${dims.height}px;--tile-bg:${primaryHex(catalogue, product)};">
+          <div class="tile-slab__plate" id="main-tile-plate" style="width:${dims.width}px;aspect-ratio:${product.size.w} / ${product.size.h};--tile-bg:${primaryHex(catalogue, product)};">
             <img id="main-tile-img" width="${dims.width}" height="${dims.height}" alt="${name}">
           </div>
           ${product.thickness_mm ? `<div class="specimen-ruler__dim">${t("product.specs.thickness", lang)}: ${product.thickness_mm} ${t("unit.mm", lang)}</div>` : ""}
@@ -257,7 +254,7 @@ function renderProduct(lang) {
             <div class="seg-group" role="group" aria-label="${t("visualizer.layout", lang)}">
               <button type="button" class="seg-btn" data-layout="straight" aria-pressed="${vizState.layout === "straight"}">${t("visualizer.layout.straight", lang)}</button>
               <button type="button" class="seg-btn" data-layout="offset" aria-pressed="${vizState.layout === "offset"}">${t("visualizer.layout.offset", lang)}</button>
-              <button type="button" class="seg-btn" data-layout="herringbone" aria-pressed="${vizState.layout === "herringbone"}" ${isRect ? "" : "disabled"}>${t("visualizer.layout.herringbone", lang)}</button>
+              <button type="button" class="seg-btn" data-layout="herringbone" aria-pressed="${vizState.layout === "herringbone"}" ${isRect ? "" : 'disabled aria-disabled="true"'}>${t("visualizer.layout.herringbone", lang)}</button>
             </div>
           </div>
 
@@ -369,13 +366,13 @@ function renderProduct(lang) {
     const a = document.createElement("a");
     a.className = "tile-card";
     a.href = pageUrl("mehsul/index.html", { id: rp.id }, lang);
-    const rd = tilePlateDimensions(rp, 160, 165);
+    const rd = tilePlateDimensions(rp, 168, 168);
     const tray = document.createElement("div");
     tray.className = "tile-card__tray";
     const plate = document.createElement("div");
     plate.className = "tile-slab__plate";
     plate.style.width = `${rd.width}px`;
-    plate.style.height = `${rd.height}px`;
+    plate.style.aspectRatio = `${rp.size.w} / ${rp.size.h}`;
     plate.style.setProperty("--tile-bg", primaryHex(catalogue, rp));
     const img = document.createElement("img");
     img.width = rd.width;

@@ -81,30 +81,19 @@ export function primaryHex(meta, product) {
   return first ? colorItem(meta, first).hex : "#9c958a";
 }
 
-/** Compute an authentic visual aspect-ratio box inside a specimen tray without extreme distortion. */
+/** Compute exact physical aspect-ratio box inside a specimen tray (scale uniformly, never squash ratio). */
 export function tilePlateDimensions(product, maxW = 190, maxH = 190) {
   const w = Number(product?.size?.w) || 60;
   const h = Number(product?.size?.h) || 60;
-  // Soften ultra-skinny ratios (like 7.5x30 = 1:4 or 20x120 = 1:6) slightly for card readability while keeping shape unmistakable
-  let ratio = w / h;
-  if (ratio < 0.28) ratio = 0.28;
-  if (ratio > 3.5) ratio = 3.5;
+  const ratio = w / h;
 
   let pw, ph;
-  if (ratio >= 1) {
+  if (ratio >= maxW / maxH) {
     pw = maxW;
     ph = pw / ratio;
-    if (ph > maxH) {
-      ph = maxH;
-      pw = ph * ratio;
-    }
   } else {
     ph = maxH;
     pw = ph * ratio;
-    if (pw > maxW) {
-      pw = maxW;
-      ph = pw / ratio;
-    }
   }
-  return { width: Math.round(pw), height: Math.round(ph) };
+  return { width: Math.max(12, Math.round(pw)), height: Math.max(12, Math.round(ph)) };
 }

@@ -129,10 +129,31 @@ export function initScrollRoom({ trackEl, canvas, badgeEl, pickerEl, stepsEl, ra
 
     const wM = currentTile.size.w / 100;
     const hM = currentTile.size.h / 100;
-    const maxDim = Math.max(wM, hM);
+    const aspect = wM / hM;
 
-    // Continuous zoom scale (pixels per metre) driven by scrollProgress
-    const pxPerM_stage1 = (Math.min(W, H) * 0.56) / maxDim;
+    // Cover-crop source rectangle from 1:1 tile texture so rectangular tiles never squash grain
+    const drawTileCover = (x, y, dw, dh, variant = 0.5) => {
+      if (!drawable) {
+        ctx.fillStyle = "#9C9488";
+        ctx.fillRect(x, y, dw, dh);
+        return;
+      }
+      const iw = drawable.naturalWidth || drawable.width || 256;
+      const ih = drawable.naturalHeight || drawable.height || 256;
+      const imgRatio = iw / ih;
+      let sx = 0, sy = 0, sw = iw, sh = ih;
+      if (aspect < imgRatio * 0.99) {
+        sw = ih * aspect;
+        sx = (iw - sw) * variant;
+      } else if (aspect > imgRatio * 1.01) {
+        sh = iw / aspect;
+        sy = (ih - sh) * variant;
+      }
+      ctx.drawImage(drawable, sx, sy, sw, sh, x, y, dw, dh);
+    };
+
+    // Continuous uniform zoom scale (pixels per metre) driven by scrollProgress — never squashes aspect ratio
+    const pxPerM_stage1 = Math.min((W * 0.62) / wM, (H * 0.58) / hM);
     const pxPerM_stage2 = Math.min(W, H) * 0.56; // 1m × 1m fills 56% of frame
     const pxPerM_stage3 = Math.min(W, H) * 0.19; // ~4.5m × 3m room
 
@@ -155,14 +176,11 @@ export function initScrollRoom({ trackEl, canvas, badgeEl, pickerEl, stepsEl, ra
     const cols = Math.ceil((W * 0.65) / Math.max(8, tileWpx)) + 1;
     const rows = Math.ceil((H * 0.65) / Math.max(8, tileHpx)) + 1;
 
-    // Subtle isometric shear in stage 3 for architectural floor feel
-    const roomTilt = clamp01((scrollProgress - 0.66) / 0.34);
+    // Stage 3 room overlay progress (keep true orthogonal architectural plan — zero Y-squash)
+    const roomReveal = clamp01((scrollProgress - 0.66) / 0.34);
 
     ctx.save();
     ctx.translate(cx, cy);
-    if (roomTilt > 0.01) {
-      ctx.transform(1, 0, -roomTilt * 0.24, 1 - roomTilt * 0.22, 0, 0);
-    }
 
     // Draw surrounding tiles as fieldReveal grows
     if (fieldReveal > 0.01) {
@@ -175,14 +193,10 @@ export function initScrollRoom({ trackEl, canvas, badgeEl, pickerEl, stepsEl, ra
 
           const x = c * (tileWpx + groutPx) - tileWpx * 0.5;
           const y = r * (tileHpx + groutPx) - tileHpx * 0.5;
+          const variant = ((Math.abs(c * 29 + r * 13) % 11) + 0.5) / 11;
           ctx.save();
           ctx.globalAlpha = appear * (0.45 + 0.55 * fieldReveal);
-          if (drawable) {
-            ctx.drawImage(drawable, x, y, tileWpx, tileHpx);
-          } else {
-            ctx.fillStyle = "#8C8780";
-            ctx.fillRect(x, y, tileWpx, tileHpx);
-          }
+          drawTileCover(x, y, tileWpx, tileHpx, variant);
           ctx.strokeStyle = "rgba(230, 224, 213, 0.42)";
           ctx.lineWidth = Math.max(1, groutPx * 0.8);
           ctx.strokeRect(x, y, tileWpx, tileHpx);
@@ -198,12 +212,7 @@ export function initScrollRoom({ trackEl, canvas, badgeEl, pickerEl, stepsEl, ra
     ctx.shadowColor = "rgba(0,0,0,0.42)";
     ctx.shadowBlur = lerp(24, 4, fieldReveal);
     ctx.shadowOffsetY = lerp(10, 2, fieldReveal);
-    if (drawable) {
-      ctx.drawImage(drawable, x0, y0, tileWpx, tileHpx);
-    } else {
-      ctx.fillStyle = "#9C9488";
-      ctx.fillRect(x0, y0, tileWpx, tileHpx);
-    }
+    drawTileCover(x0, y0, tileWpx, tileHpx, 0.5);
     ctx.restore();
 
     // Accent border on single hero tile
@@ -270,13 +279,13 @@ export function initScrollRoom({ trackEl, canvas, badgeEl, pickerEl, stepsEl, ra
     }
 
     // Stage 3 room perimeter frame showing selected area
-    if (roomTilt > 0.04) {
+    if (roomReveal > 0.04) {
       const area = Math.max(1, currentArea());
       const sideM = Math.sqrt(area);
       const rW = Math.min(W * 0.72, sideM * pxPerM * 1.15);
       const rH = Math.min(H * 0.72, sideM * pxPerM * 0.85);
       ctx.save();
-      ctx.globalAlpha = roomTilt;
+      ctx.globalAlpha = roomReveal;
       ctx.strokeStyle = "#E09779";
       ctx.lineWidth = Math.max(2, 2 * dpr);
       ctx.strokeRect(-rW / 2, -rH / 2, rW, rH);

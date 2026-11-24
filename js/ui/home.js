@@ -40,8 +40,8 @@ function renderStaticCopy(lang) {
 
   $("categories-eyebrow").textContent = t("nav.catalog", lang);
   $("categories-title").textContent = t("home.categories.title", lang);
-  $("categories-admin-link").innerHTML = `${t("nav.admin", lang)} ${icons.arrowRight}`;
-  $("categories-admin-link").href = pageUrl("admin/index.html", {}, lang);
+  $("categories-catalog-link").innerHTML = `${t("home.hero.cta", lang)} ${icons.arrowRight}`;
+  $("categories-catalog-link").href = pageUrl("katalog/", {}, lang);
 }
 
 function renderFeatured(lang) {
@@ -65,7 +65,7 @@ function renderFeatured(lang) {
   items.forEach((product, idx) => {
     const cls = layoutClasses[idx % layoutClasses.length];
     const maxW = idx === 0 ? 250 : (idx === 1 || idx === 5) ? 290 : 185;
-    const maxH = idx === 0 ? 340 : 185;
+    const maxH = idx === 0 ? 340 : idx === 5 ? 204 : 185;
     const dims = tilePlateDimensions(product, maxW, maxH);
 
     const a = document.createElement("a");
@@ -81,7 +81,7 @@ function renderFeatured(lang) {
     const plate = document.createElement("div");
     plate.className = "tile-slab__plate";
     plate.style.width = `${dims.width}px`;
-    plate.style.height = `${dims.height}px`;
+    plate.style.aspectRatio = `${product.size.w} / ${product.size.h}`;
     plate.style.setProperty("--tile-bg", primaryHex(catalogue, product));
 
     const img = document.createElement("img");
