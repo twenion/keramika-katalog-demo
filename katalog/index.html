@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kafel kataloqu — Səth</title>
+  <meta name="description" content="Kafelləri ölçüsünə, rənginə və istifadə yerinə görə seçin.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://example.az/katalog/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kafel kataloqu — Səth">
+  <meta property="og:description" content="Kafelləri ölçüsünə, rənginə və istifadə yerinə görə seçin.">
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Məzmuna keç</a>
+  <header class="site-header" id="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="../index.html"><span class="brand__name">Səth</span></a>
+      <nav class="site-nav" aria-label="Menyu">
+        <a class="site-nav__link" href="../index.html">Ana səhifə</a>
+        <a class="site-nav__link" href="index.html" aria-current="page">Kataloq</a>
+        <a class="site-nav__link" href="../admin/index.html">İdarəetmə</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap page-head__row">
+        <div>
+          <p class="eyebrow" id="cat-eyebrow">Səth</p>
+          <h1 class="page-head__title" id="cat-title">Kafel kataloqu</h1>
+          <p class="page-head__sub" id="cat-sub">Kafelləri ölçüsünə, rənginə və istifadə yerinə görə seçin.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap catalog-shell">
+      <aside class="filter-rail" id="filter-rail" aria-label="Filtrlər">
+        <div class="filter-rail__head">
+          <h2 class="filter-rail__title" id="filters-heading">Filtrlər</h2>
+          <div style="display:flex;gap:6px;align-items:center;">
+            <button type="button" class="btn btn--ghost btn--sm" id="clear-filters-rail">Filtrləri sıfırla</button>
+            <button type="button" class="btn btn--outline btn--sm filter-drawer-close" id="close-filters" aria-label="Bağla">×</button>
+          </div>
+        </div>
+        <div id="facets-container"></div>
+        <div class="filter-drawer-foot">
+          <button type="button" class="btn btn--outline" id="clear-filters-drawer">Filtrləri sıfırla</button>
+          <button type="button" class="btn btn--ink" id="apply-filters-drawer">Nəticələrə bax</button>
+        </div>
+      </aside>
+
+      <section class="catalog-main" aria-labelledby="cat-title">
+        <div class="catalog-bar">
+          <div class="search-box">
+            <span class="search-box__icon" id="search-icon" aria-hidden="true"></span>
+            <label class="sr-only" for="catalog-search" id="search-label">Məhsul axtar</label>
+            <input class="search-box__input" id="catalog-search" type="search" autocomplete="off" placeholder="Məhsulun adını yazın">
+            <button type="button" class="search-box__clear" id="search-clear" hidden aria-label="Təmizlə">×</button>
+          </div>
+
+          <button type="button" class="btn btn--outline mobile-filter-btn" id="open-filters">
+            <span id="open-filters-label">Filtrləri aç</span>
+          </button>
+
+          <div class="catalog-bar__meta">
+            <p class="result-count" id="result-count" aria-live="polite"></p>
+            <div class="view-toggle" role="group" id="view-toggle" aria-label="Görünüş">
+              <button type="button" class="view-toggle__btn" data-view="grid" aria-pressed="true" id="view-grid-btn">Tor</button>
+              <button type="button" class="view-toggle__btn" data-view="list" aria-pressed="false" id="view-list-btn">Siyahı</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="active-filters" id="active-filters" hidden></div>
+        <div class="catalog-grid" id="catalog-grid">
+          <noscript><p>Kataloqu filtrləmək üçün brauzerdə JavaScript aktiv olmalıdır.</p></noscript>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <p>Bu, Twenion tərəfindən hazırlanmış nümunə saytdır. Məhsullar və məlumatlar nümunədir.</p>
+        <span>Səth · Bakı</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/ui/catalog-page.js"></script>
+</body>
+</html>

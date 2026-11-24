@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Səth — Keramika, kafel və metlax kataloqu</title>
+  <meta name="description" content="Döşəmə kafeli, divar kafeli, metlax və mozaikaya baxın. Ölçü, rəng və səthə görə seçim edin.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://example.az/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Səth — Keramika, kafel və metlax kataloqu">
+  <meta property="og:description" content="Döşəmə kafeli, divar kafeli, metlax və mozaikaya baxın. Ölçü, rəng və səthə görə seçim edin.">
+  <meta property="og:url" content="https://example.az/">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Səth",
+    "description": "Keramika, kafel və metlax kataloqu — Bakı (nümunə sayt)",
+    "url": "https://example.az/",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bakı",
+      "addressCountry": "AZ"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Məzmuna keç</a>
+  <header class="site-header" id="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__name">Səth</span>
+        <span class="brand__tag">Keramika, kafel və metlax</span>
+      </a>
+      <nav class="site-nav" aria-label="Menyu">
+        <a class="site-nav__link" href="index.html" aria-current="page">Ana səhifə</a>
+        <a class="site-nav__link" href="katalog/index.html">Kataloq</a>
+        <a class="site-nav__link" href="admin/index.html">İdarəetmə</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Signature Hero: Full-viewport perspective Hörgü tile laying -->
+    <section class="hero-horgu" data-scene="hero" aria-labelledby="hero-title">
+      <canvas class="hero-horgu__canvas" id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-horgu__scrim" aria-hidden="true"></div>
+
+      <div class="wrap hero-horgu__content">
+        <div class="hero-horgu__header">
+          <p class="eyebrow hero-horgu__eyebrow" id="hero-eyebrow">Səth · Bakı</p>
+          <h1 class="hero-horgu__title" id="hero-title">Kafeldən bütöv səthə</h1>
+          <p class="hero-horgu__sub" id="hero-sub">Daş naxışından rəngli mozaikaya qədər. Kafeli seçin, necə döşəndiyinə baxın.</p>
+          <div class="hero-horgu__actions">
+            <a class="btn hero-horgu__cta" id="hero-cta" href="katalog/index.html">Kataloqa bax</a>
+            <a class="btn hero-horgu__ghost" id="hero-samples-link" href="#featured">Kafel nümunələri</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-dock">
+        <div class="wrap hero-dock__inner">
+          <div class="hero-dock__tabs" id="hero-tabs" role="group" aria-label="Kafel nümunələri"></div>
+          <div class="hero-dock__readout" id="hero-readout" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scroll-driven sequence: Bir kafeldən otağa -->
+    <section class="scroll-seq" data-scene="sequence" aria-labelledby="seq-title">
+      <div class="scroll-seq__track" id="seq-track">
+        <div class="scroll-seq__sticky">
+          <div class="wrap">
+            <div class="scroll-seq__top">
+              <div>
+                <p class="eyebrow" id="seq-eyebrow">Qutu hesabı</p>
+                <h2 class="section__title" id="seq-title">Bir kafeldən otağa</h2>
+              </div>
+              <div class="scroll-seq__steps" id="seq-steps" aria-label="Mərhələlər">
+                <button type="button" class="seq-step is-active" data-step="0"><span class="seq-step__num">01</span><span id="seq-lbl-0">Bir kafel</span></button>
+                <button type="button" class="seq-step" data-step="1"><span class="seq-step__num">02</span><span id="seq-lbl-1">Bir kvadratmetr</span></button>
+                <button type="button" class="seq-step" data-step="2"><span class="seq-step__num">03</span><span id="seq-lbl-2">Bütöv səth</span></button>
+              </div>
+            </div>
+
+            <div class="scroll-seq__stage">
+              <div class="seq-canvas-wrap">
+                <canvas class="seq-canvas" id="seq-canvas" aria-hidden="true"></canvas>
+                <div class="seq-overlay-badge" id="seq-badge"></div>
+              </div>
+              <aside class="seq-panel">
+                <div>
+                  <p class="field-label" id="seq-picker-label" style="margin-bottom:8px;">Kafel nümunələri</p>
+                  <div class="seq-panel__tile-picker" id="seq-tile-picker"></div>
+                </div>
+
+                <div class="seq-meter">
+                  <div class="seq-meter__row">
+                    <label class="seq-meter__label" for="seq-area-range" id="seq-area-label">Səthin sahəsi</label>
+                    <span class="seq-meter__val" id="seq-area-val">18 m²</span>
+                  </div>
+                  <input class="seq-range" id="seq-area-range" type="range" min="1" max="60" step="1" value="18">
+                  <div class="seq-meter__row">
+                    <span class="seq-meter__label" id="seq-boxes-label">Qutu sayı</span>
+                    <span class="seq-meter__val seq-meter__val--accent" id="seq-boxes-val">14</span>
+                  </div>
+                  <div class="seq-meter__row">
+                    <span class="seq-meter__label" id="seq-total-label">Qutuların toplam sahəsi</span>
+                    <strong class="tabular" id="seq-total-val">20.16 m²</strong>
+                  </div>
+                  <p class="field-hint" id="seq-reserve-note">Hesaba 10% kəsim ehtiyatı daxildir.</p>
+                </div>
+
+                <div>
+                  <div class="seq-progress-bar" aria-hidden="true"><div class="seq-progress-bar__fill" id="seq-progress-fill"></div></div>
+                  <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;">
+                    <a class="btn btn--ink btn--sm" id="seq-open-tile" href="mehsul/index.html?id=qobustan-boz">Səthdə bax</a>
+                    <a class="btn btn--outline btn--sm" id="seq-to-catalog" href="katalog/index.html">Kataloqa bax</a>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Asymmetric Editorial Featured Sample Board -->
+    <section class="section" id="featured" data-scene="featured" aria-labelledby="featured-title">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow" id="featured-eyebrow">Kafel nümunələri</p>
+            <h2 class="section__title" id="featured-title">Seçilmiş məhsullar</h2>
+          </div>
+          <a class="section__link" id="featured-all-link" href="katalog/index.html">Kataloqa bax</a>
+        </div>
+        <div class="specimen-board" id="featured-board">
+          <noscript><p style="padding:24px;">Kataloqa baxmaq üçün <a href="katalog/index.html">kataloq səhifəsinə</a> keçin.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architectural Category Ledger -->
+    <section class="section" id="categories" data-scene="categories" aria-labelledby="categories-title">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow" id="categories-eyebrow">Kataloq</p>
+            <h2 class="section__title" id="categories-title">Kateqoriyalar</h2>
+          </div>
+          <a class="section__link" id="categories-admin-link" href="admin/index.html">İdarəetmə</a>
+        </div>
+        <div class="cat-ledger" id="category-ledger"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <p>Bu, Twenion tərəfindən hazırlanmış nümunə saytdır. Məhsullar və məlumatlar nümunədir.</p>
+        <span>Səth · Bakı</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/ui/home.js"></script>
+</body>
+</html>

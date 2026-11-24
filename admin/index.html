@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kataloqu idarə et — Səth</title>
+  <meta name="description" content="Məhsul əlavə edin, redaktə edin və ya Excel faylından toplu idxal edin.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://example.az/admin/">
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Məzmuna keç</a>
+  <header class="site-header" id="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="../index.html"><span class="brand__name">Səth</span></a>
+      <nav class="site-nav" aria-label="Menyu">
+        <a class="site-nav__link" href="../index.html">Ana səhifə</a>
+        <a class="site-nav__link" href="../katalog/index.html">Kataloq</a>
+        <a class="site-nav__link" href="index.html" aria-current="page">İdarəetmə</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="demo-banner" role="note">
+    <div class="wrap demo-banner__inner">
+      <span id="admin-notice">Bu, nümunə idarəetmə panelidir. Dəyişikliklər yalnız bu brauzerdə saxlanılır.</span>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap page-head__row">
+        <div>
+          <p class="eyebrow" id="admin-eyebrow">Səth · İdarəetmə</p>
+          <h1 class="page-head__title" id="admin-title">Kataloqu idarə et</h1>
+        </div>
+        <div class="admin-actions">
+          <button type="button" class="btn btn--primary" id="btn-new-product">Məhsul əlavə et</button>
+          <button type="button" class="btn btn--outline" id="btn-export-json">JSON-u endir</button>
+          <button type="button" class="btn btn--danger" id="btn-reset-overlay">Dəyişiklikləri sıfırla</button>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="admin-status" id="admin-status" hidden role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <div class="wrap admin-grid">
+      <!-- 1. Excel Drag-and-Drop Bulk Import -->
+      <section class="admin-panel" id="excel-section" aria-labelledby="excel-title">
+        <div class="admin-panel__head">
+          <h2 class="admin-panel__title" id="excel-title">Excel-dən əlavə et</h2>
+          <a class="btn btn--outline btn--sm" id="excel-sample-link" href="../data/numune.xlsx" download="numune.xlsx">Nümunə Excel-i yüklə</a>
+        </div>
+
+        <div class="drop-zone" id="excel-drop-zone">
+          <div id="excel-drop-icon" aria-hidden="true"></div>
+          <p class="drop-zone__text" id="excel-drop-text">.xlsx faylını buraya sürükləyin və ya seçin.</p>
+          <div class="drop-zone__btns">
+            <label class="btn btn--ink btn--sm" for="excel-file-input" id="excel-choose-btn">Excel faylı seç</label>
+            <input class="sr-only" id="excel-file-input" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+            <a class="btn btn--outline btn--sm" id="excel-sample-link-2" href="../data/numune.xlsx" download="numune.xlsx">Nümunə Excel-i yüklə</a>
+          </div>
+        </div>
+
+        <div class="excel-preview" id="excel-preview" hidden></div>
+      </section>
+
+      <!-- 2. Add / Edit Product Form -->
+      <section class="admin-panel" id="form-section" hidden aria-labelledby="form-title">
+        <div class="admin-panel__head">
+          <h2 class="admin-panel__title" id="form-title">Məhsul əlavə et</h2>
+          <button type="button" class="btn btn--ghost btn--sm" id="form-close-btn">Bağla</button>
+        </div>
+        <form id="product-form" novalidate></form>
+      </section>
+
+      <!-- 3. Product Catalogue Table -->
+      <section class="admin-panel" aria-labelledby="products-list-title">
+        <div class="admin-panel__head">
+          <h2 class="admin-panel__title" id="products-list-title">Məhsullar</h2>
+          <span class="result-count" id="admin-count"></span>
+        </div>
+        <div id="products-table-wrap"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <p>Bu, Twenion tərəfindən hazırlanmış nümunə saytdır. Məhsullar və məlumatlar nümunədir.</p>
+        <span>Səth · Bakı</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/ui/admin-page.js"></script>
+</body>
+</html>
