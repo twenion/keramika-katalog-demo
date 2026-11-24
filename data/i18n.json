@@ -1,0 +1,837 @@
+{
+  "site.name": {
+    "az": "Səth",
+    "ru": "Səth",
+    "en": "Səth"
+  },
+  "site.tagline": {
+    "az": "Keramika, kafel və metlax",
+    "ru": "Керамика, кафель и цементная плитка",
+    "en": "Ceramic, porcelain and cement tiles"
+  },
+  "site.location": {
+    "az": "Bakı",
+    "ru": "Баку",
+    "en": "Baku"
+  },
+  "nav.home": {
+    "az": "Ana səhifə",
+    "ru": "Главная",
+    "en": "Home"
+  },
+  "nav.catalog": {
+    "az": "Kataloq",
+    "ru": "Каталог",
+    "en": "Catalogue"
+  },
+  "nav.admin": {
+    "az": "İdarəetmə",
+    "ru": "Управление",
+    "en": "Admin"
+  },
+  "nav.menu": {
+    "az": "Menyu",
+    "ru": "Меню",
+    "en": "Menu"
+  },
+  "nav.language": {
+    "az": "Dil",
+    "ru": "Язык",
+    "en": "Language"
+  },
+  "lang.az": {
+    "az": "Azərbaycanca",
+    "ru": "Азербайджанский",
+    "en": "Azerbaijani"
+  },
+  "lang.ru": {
+    "az": "Rusca",
+    "ru": "Русский",
+    "en": "Russian"
+  },
+  "lang.en": {
+    "az": "İngiliscə",
+    "ru": "Английский",
+    "en": "English"
+  },
+  "common.loading": {
+    "az": "Yüklənir…",
+    "ru": "Загрузка…",
+    "en": "Loading…"
+  },
+  "common.loadError": {
+    "az": "Məlumat yüklənmədi. Yenidən cəhd edin.",
+    "ru": "Не удалось загрузить данные. Попробуйте ещё раз.",
+    "en": "The data could not be loaded. Please try again."
+  },
+  "common.retry": {
+    "az": "Yenidən cəhd et",
+    "ru": "Повторить",
+    "en": "Try again"
+  },
+  "common.close": {
+    "az": "Bağla",
+    "ru": "Закрыть",
+    "en": "Close"
+  },
+  "common.cancel": {
+    "az": "Ləğv et",
+    "ru": "Отмена",
+    "en": "Cancel"
+  },
+  "common.clear": {
+    "az": "Təmizlə",
+    "ru": "Очистить",
+    "en": "Clear"
+  },
+  "common.yes": {
+    "az": "Bəli",
+    "ru": "Да",
+    "en": "Yes"
+  },
+  "common.no": {
+    "az": "Xeyr",
+    "ru": "Нет",
+    "en": "No"
+  },
+  "common.previous": {
+    "az": "Əvvəlki",
+    "ru": "Назад",
+    "en": "Previous"
+  },
+  "common.next": {
+    "az": "Növbəti",
+    "ru": "Далее",
+    "en": "Next"
+  },
+  "common.skipToContent": {
+    "az": "Məzmuna keç",
+    "ru": "К содержанию",
+    "en": "Skip to content"
+  },
+  "home.title": {
+    "az": "Səth — Keramika, kafel və metlax kataloqu",
+    "ru": "Səth — каталог керамики, кафеля и цементной плитки",
+    "en": "Səth — Ceramic, porcelain and cement tile catalogue"
+  },
+  "home.description": {
+    "az": "Döşəmə kafeli, divar kafeli, metlax və mozaikaya baxın. Ölçü, rəng və səthə görə seçim edin.",
+    "ru": "Выберите напольную и настенную плитку, метлах или мозаику по размеру, цвету и поверхности.",
+    "en": "Browse floor tiles, wall tiles, cement tiles and mosaics by size, colour and finish."
+  },
+  "home.hero.title": {
+    "az": "Kafeldən bütöv səthə",
+    "ru": "От плитки к целой поверхности",
+    "en": "From a tile to a whole surface"
+  },
+  "home.hero.subtitle": {
+    "az": "Daş naxışından rəngli mozaikaya qədər. Kafeli seçin, necə döşəndiyinə baxın.",
+    "ru": "От рисунка камня до цветной мозаики. Выберите плитку и посмотрите, как она выглядит в укладке.",
+    "en": "From stone patterns to coloured mosaics. Choose a tile and see it laid out."
+  },
+  "home.hero.cta": {
+    "az": "Kataloqa bax",
+    "ru": "Смотреть каталог",
+    "en": "Browse the catalogue"
+  },
+  "home.hero.materials": {
+    "az": "Kafel nümunələri",
+    "ru": "Образцы плитки",
+    "en": "Tile samples"
+  },
+  "home.featured.title": {
+    "az": "Seçilmiş məhsullar",
+    "ru": "Избранные модели",
+    "en": "Featured tiles"
+  },
+  "home.categories.title": {
+    "az": "Kateqoriyalar",
+    "ru": "Категории",
+    "en": "Categories"
+  },
+  "home.sequence.title": {
+    "az": "Bir kafeldən otağa",
+    "ru": "От одной плитки до комнаты",
+    "en": "From a single tile to a room"
+  },
+  "home.sequence.tile": {
+    "az": "Bir kafel",
+    "ru": "Одна плитка",
+    "en": "One tile"
+  },
+  "home.sequence.squareMetre": {
+    "az": "Bir kvadratmetr",
+    "ru": "Один квадратный метр",
+    "en": "One square metre"
+  },
+  "home.sequence.surface": {
+    "az": "Bütöv səth",
+    "ru": "Вся поверхность",
+    "en": "The whole surface"
+  },
+  "catalog.title": {
+    "az": "Kafel kataloqu",
+    "ru": "Каталог плитки",
+    "en": "Tile catalogue"
+  },
+  "catalog.description": {
+    "az": "Kafelləri ölçüsünə, rənginə və istifadə yerinə görə seçin.",
+    "ru": "Подберите плитку по размеру, цвету и месту применения.",
+    "en": "Find tiles by size, colour and where you plan to use them."
+  },
+  "catalog.search": {
+    "az": "Məhsul axtar",
+    "ru": "Поиск плитки",
+    "en": "Search tiles"
+  },
+  "catalog.search.placeholder": {
+    "az": "Məhsulun adını yazın",
+    "ru": "Введите название плитки",
+    "en": "Enter a tile name"
+  },
+  "catalog.filters.title": {
+    "az": "Filtrlər",
+    "ru": "Фильтры",
+    "en": "Filters"
+  },
+  "catalog.filters.category": {
+    "az": "Kateqoriya",
+    "ru": "Категория",
+    "en": "Category"
+  },
+  "catalog.filters.size": {
+    "az": "Ölçü",
+    "ru": "Размер",
+    "en": "Size"
+  },
+  "catalog.filters.surface": {
+    "az": "Səth",
+    "ru": "Поверхность",
+    "en": "Finish"
+  },
+  "catalog.filters.color": {
+    "az": "Rəng",
+    "ru": "Цвет",
+    "en": "Colour"
+  },
+  "catalog.filters.use": {
+    "az": "İstifadə yeri",
+    "ru": "Применение",
+    "en": "Use"
+  },
+  "catalog.filters.all": {
+    "az": "Hamısı",
+    "ru": "Все",
+    "en": "All"
+  },
+  "catalog.filters.clear": {
+    "az": "Filtrləri sıfırla",
+    "ru": "Сбросить фильтры",
+    "en": "Clear filters"
+  },
+  "catalog.filters.show": {
+    "az": "Filtrləri aç",
+    "ru": "Открыть фильтры",
+    "en": "Show filters"
+  },
+  "catalog.filters.apply": {
+    "az": "Nəticələrə bax",
+    "ru": "Показать результаты",
+    "en": "Show results"
+  },
+  "catalog.results.count": {
+    "az": "Məhsul sayı — {count}",
+    "ru": "Найдено — {count}",
+    "en": "Tiles found — {count}"
+  },
+  "catalog.view.label": {
+    "az": "Görünüş",
+    "ru": "Вид",
+    "en": "View"
+  },
+  "catalog.view.grid": {
+    "az": "Tor",
+    "ru": "Сетка",
+    "en": "Grid"
+  },
+  "catalog.view.list": {
+    "az": "Siyahı",
+    "ru": "Список",
+    "en": "List"
+  },
+  "catalog.empty.title": {
+    "az": "Məhsul tapılmadı",
+    "ru": "Плитка не найдена",
+    "en": "No tiles found"
+  },
+  "catalog.empty.description": {
+    "az": "Axtarış sözünü dəyişin və ya filtrlərdən birini silin.",
+    "ru": "Измените поисковый запрос или снимите один из фильтров.",
+    "en": "Try a different search term or remove a filter."
+  },
+  "catalog.empty.action": {
+    "az": "Filtrləri sıfırla",
+    "ru": "Сбросить фильтры",
+    "en": "Clear filters"
+  },
+  "product.back": {
+    "az": "Kataloqa qayıt",
+    "ru": "Вернуться в каталог",
+    "en": "Back to catalogue"
+  },
+  "product.notFound.title": {
+    "az": "Məhsul tapılmadı",
+    "ru": "Плитка не найдена",
+    "en": "Tile not found"
+  },
+  "product.notFound.description": {
+    "az": "Bu məhsul hazırkı kataloqda görünmür.",
+    "ru": "В текущем каталоге этой плитки нет.",
+    "en": "This tile is unavailable in the current catalogue."
+  },
+  "product.details.title": {
+    "az": "Məhsul haqqında",
+    "ru": "О плитке",
+    "en": "About this tile"
+  },
+  "product.specs.title": {
+    "az": "Texniki göstəricilər",
+    "ru": "Характеристики",
+    "en": "Specifications"
+  },
+  "product.specs.category": {
+    "az": "Kateqoriya",
+    "ru": "Категория",
+    "en": "Category"
+  },
+  "product.specs.size": {
+    "az": "Ölçü",
+    "ru": "Размер",
+    "en": "Size"
+  },
+  "product.specs.thickness": {
+    "az": "Qalınlıq",
+    "ru": "Толщина",
+    "en": "Thickness"
+  },
+  "product.specs.surface": {
+    "az": "Səth",
+    "ru": "Поверхность",
+    "en": "Finish"
+  },
+  "product.specs.color": {
+    "az": "Rəng",
+    "ru": "Цвет",
+    "en": "Colour"
+  },
+  "product.specs.use": {
+    "az": "İstifadə yeri",
+    "ru": "Применение",
+    "en": "Use"
+  },
+  "product.specs.material": {
+    "az": "Material",
+    "ru": "Материал",
+    "en": "Material"
+  },
+  "product.specs.piecesPerBox": {
+    "az": "Qutuda ədəd",
+    "ru": "Штук в коробке",
+    "en": "Pieces per box"
+  },
+  "product.specs.m2PerBox": {
+    "az": "Bir qutunun sahəsi",
+    "ru": "Площадь в коробке",
+    "en": "Coverage per box"
+  },
+  "product.related.title": {
+    "az": "Bənzər məhsullar",
+    "ru": "Похожие модели",
+    "en": "Related tiles"
+  },
+  "product.image.unavailable": {
+    "az": "Məhsulun şəkli yoxdur",
+    "ru": "Изображение плитки недоступно",
+    "en": "Tile image unavailable"
+  },
+  "unit.cm": {
+    "az": "sm",
+    "ru": "см",
+    "en": "cm"
+  },
+  "unit.mm": {
+    "az": "mm",
+    "ru": "мм",
+    "en": "mm"
+  },
+  "unit.m2": {
+    "az": "m²",
+    "ru": "м²",
+    "en": "m²"
+  },
+  "unit.pieces": {
+    "az": "ədəd",
+    "ru": "шт.",
+    "en": "pcs"
+  },
+  "calculator.title": {
+    "az": "Qutu hesabı",
+    "ru": "Расчёт коробок",
+    "en": "Box calculator"
+  },
+  "calculator.area": {
+    "az": "Səthin sahəsi",
+    "ru": "Площадь поверхности",
+    "en": "Surface area"
+  },
+  "calculator.area.placeholder": {
+    "az": "Məsələn, 12,5",
+    "ru": "Например, 12,5",
+    "en": "For example, 12.5"
+  },
+  "calculator.reserve": {
+    "az": "Hesaba 10% kəsim ehtiyatı daxildir.",
+    "ru": "В расчёт включён запас 10% на подрезку.",
+    "en": "Includes a 10% allowance for cuts."
+  },
+  "calculator.boxes": {
+    "az": "Qutu sayı",
+    "ru": "Количество коробок",
+    "en": "Boxes needed"
+  },
+  "calculator.total": {
+    "az": "Qutuların toplam sahəsi",
+    "ru": "Общая площадь плитки",
+    "en": "Total tile coverage"
+  },
+  "calculator.invalidArea": {
+    "az": "Sahəni sıfırdan böyük rəqəmlə yazın.",
+    "ru": "Введите площадь больше нуля.",
+    "en": "Enter an area greater than zero."
+  },
+  "whatsapp.button": {
+    "az": "WhatsApp-da soruş",
+    "ru": "Спросить в WhatsApp",
+    "en": "Ask on WhatsApp"
+  },
+  "whatsapp.phone": {
+    "az": "+994 00 000 00 00",
+    "ru": "+994 00 000 00 00",
+    "en": "+994 00 000 00 00"
+  },
+  "whatsapp.placeholder": {
+    "az": "Nümunə nömrə",
+    "ru": "Демонстрационный номер",
+    "en": "Placeholder number"
+  },
+  "whatsapp.message": {
+    "az": "Salam! \"{name}\" ({size}) haqqında məlumat almaq istəyirəm.",
+    "ru": "Здравствуйте! Подскажите, пожалуйста, подробнее о плитке «{name}» ({size}).",
+    "en": "Hello! I'd like to know more about \"{name}\" ({size})."
+  },
+  "visualizer.title": {
+    "az": "Səthdə bax",
+    "ru": "Посмотреть в укладке",
+    "en": "View in layout"
+  },
+  "visualizer.description": {
+    "az": "Kafelin döşəmədə və ya divarda necə göründüyünə baxın.",
+    "ru": "Посмотрите, как плитка выглядит на полу или стене.",
+    "en": "See how the tile looks on a floor or wall."
+  },
+  "visualizer.plane": {
+    "az": "Səth",
+    "ru": "Поверхность",
+    "en": "Surface"
+  },
+  "visualizer.floor": {
+    "az": "Döşəmə",
+    "ru": "Пол",
+    "en": "Floor"
+  },
+  "visualizer.wall": {
+    "az": "Divar",
+    "ru": "Стена",
+    "en": "Wall"
+  },
+  "visualizer.layout": {
+    "az": "Döşəmə qaydası",
+    "ru": "Схема укладки",
+    "en": "Tile layout"
+  },
+  "visualizer.layout.straight": {
+    "az": "Düz",
+    "ru": "Прямая",
+    "en": "Straight"
+  },
+  "visualizer.layout.offset": {
+    "az": "Yarım sürüşdürmə",
+    "ru": "Со смещением на полплитки",
+    "en": "Half offset"
+  },
+  "visualizer.layout.herringbone": {
+    "az": "Siyənək",
+    "ru": "Ёлочка",
+    "en": "Herringbone"
+  },
+  "visualizer.grout": {
+    "az": "Fuga",
+    "ru": "Затирка",
+    "en": "Grout"
+  },
+  "visualizer.preview": {
+    "az": "Kafelin səthdə görünüşü",
+    "ru": "Предпросмотр плитки в укладке",
+    "en": "Tile layout preview"
+  },
+  "admin.title": {
+    "az": "Kataloqu idarə et",
+    "ru": "Управление каталогом",
+    "en": "Manage catalogue"
+  },
+  "admin.notice": {
+    "az": "Bu, nümunə idarəetmə panelidir. Dəyişikliklər yalnız bu brauzerdə saxlanılır.",
+    "ru": "Это демонстрационная панель. Изменения сохраняются только в этом браузере.",
+    "en": "This is a demo admin panel. Changes are saved only in this browser."
+  },
+  "admin.products.title": {
+    "az": "Məhsullar",
+    "ru": "Товары",
+    "en": "Products"
+  },
+  "admin.products.empty": {
+    "az": "Siyahıda məhsul yoxdur.",
+    "ru": "Список товаров пуст.",
+    "en": "There are no products in the list."
+  },
+  "admin.add": {
+    "az": "Məhsul əlavə et",
+    "ru": "Добавить товар",
+    "en": "Add product"
+  },
+  "admin.edit": {
+    "az": "Redaktə et",
+    "ru": "Редактировать",
+    "en": "Edit"
+  },
+  "admin.form.editTitle": {
+    "az": "Məhsulu redaktə et",
+    "ru": "Редактирование товара",
+    "en": "Edit product"
+  },
+  "admin.delete": {
+    "az": "Sil",
+    "ru": "Удалить",
+    "en": "Delete"
+  },
+  "admin.delete.confirm": {
+    "az": "«{name}» məhsulu silinsin?",
+    "ru": "Удалить товар «{name}»?",
+    "en": "Delete “{name}”?"
+  },
+  "admin.save": {
+    "az": "Yadda saxla",
+    "ru": "Сохранить",
+    "en": "Save"
+  },
+  "admin.cancel": {
+    "az": "Ləğv et",
+    "ru": "Отмена",
+    "en": "Cancel"
+  },
+  "admin.reset": {
+    "az": "Dəyişiklikləri sıfırla",
+    "ru": "Сбросить изменения",
+    "en": "Reset changes"
+  },
+  "admin.reset.confirm": {
+    "az": "Bu brauzerdəki dəyişikliklər silinsin?",
+    "ru": "Сбросить все изменения в этом браузере?",
+    "en": "Reset all changes in this browser?"
+  },
+  "admin.export": {
+    "az": "JSON-u endir",
+    "ru": "Скачать JSON",
+    "en": "Download JSON"
+  },
+  "admin.status.added": {
+    "az": "Məhsul əlavə olundu.",
+    "ru": "Товар добавлен.",
+    "en": "Product added."
+  },
+  "admin.status.saved": {
+    "az": "Dəyişikliklər yadda saxlanıldı.",
+    "ru": "Изменения сохранены.",
+    "en": "Changes saved."
+  },
+  "admin.status.deleted": {
+    "az": "Məhsul silindi.",
+    "ru": "Товар удалён.",
+    "en": "Product deleted."
+  },
+  "admin.status.reset": {
+    "az": "İlkin kataloq bərpa olundu.",
+    "ru": "Исходный каталог восстановлен.",
+    "en": "The original catalogue was restored."
+  },
+  "admin.status.storageError": {
+    "az": "Dəyişiklikləri brauzerdə saxlamaq mümkün olmadı.",
+    "ru": "Не удалось сохранить изменения в браузере.",
+    "en": "The browser could not save the changes."
+  },
+  "admin.form.id": {
+    "az": "Məhsul kodu",
+    "ru": "Код товара",
+    "en": "Product ID"
+  },
+  "admin.form.idHint": {
+    "az": "Kiçik latın hərfləri, rəqəmlər və defis işlədin.",
+    "ru": "Используйте строчные латинские буквы, цифры и дефисы.",
+    "en": "Use lowercase Latin letters, digits and hyphens."
+  },
+  "admin.form.category": {
+    "az": "Kateqoriya",
+    "ru": "Категория",
+    "en": "Category"
+  },
+  "admin.form.name": {
+    "az": "Məhsulun adı",
+    "ru": "Название товара",
+    "en": "Product name"
+  },
+  "admin.form.width": {
+    "az": "En (sm)",
+    "ru": "Ширина (см)",
+    "en": "Width (cm)"
+  },
+  "admin.form.height": {
+    "az": "Uzunluq (sm)",
+    "ru": "Длина (см)",
+    "en": "Length (cm)"
+  },
+  "admin.form.thickness": {
+    "az": "Qalınlıq (mm)",
+    "ru": "Толщина (мм)",
+    "en": "Thickness (mm)"
+  },
+  "admin.form.surface": {
+    "az": "Səth",
+    "ru": "Поверхность",
+    "en": "Finish"
+  },
+  "admin.form.colors": {
+    "az": "Rənglər",
+    "ru": "Цвета",
+    "en": "Colours"
+  },
+  "admin.form.uses": {
+    "az": "İstifadə yerləri",
+    "ru": "Применение",
+    "en": "Uses"
+  },
+  "admin.form.material": {
+    "az": "Material",
+    "ru": "Материал",
+    "en": "Material"
+  },
+  "admin.form.piecesPerBox": {
+    "az": "Qutuda ədəd",
+    "ru": "Штук в коробке",
+    "en": "Pieces per box"
+  },
+  "admin.form.m2PerBox": {
+    "az": "Qutunun sahəsi (m²)",
+    "ru": "Площадь в коробке (м²)",
+    "en": "Coverage per box (m²)"
+  },
+  "admin.form.image": {
+    "az": "Məhsulun şəkli",
+    "ru": "Изображение товара",
+    "en": "Product image"
+  },
+  "admin.form.imageUpload": {
+    "az": "Şəkil seç",
+    "ru": "Выбрать изображение",
+    "en": "Choose image"
+  },
+  "admin.form.imageRemove": {
+    "az": "Şəkli sil",
+    "ru": "Удалить изображение",
+    "en": "Remove image"
+  },
+  "admin.form.imageError": {
+    "az": "Şəkli oxumaq mümkün olmadı.",
+    "ru": "Не удалось прочитать изображение.",
+    "en": "The image could not be read."
+  },
+  "admin.form.description": {
+    "az": "Təsvir",
+    "ru": "Описание",
+    "en": "Description"
+  },
+  "admin.form.featured": {
+    "az": "Ana səhifədə göstər",
+    "ru": "Показывать на главной",
+    "en": "Show on the home page"
+  },
+  "admin.table.product": {
+    "az": "Məhsul",
+    "ru": "Товар",
+    "en": "Product"
+  },
+  "admin.table.actions": {
+    "az": "Əməliyyatlar",
+    "ru": "Действия",
+    "en": "Actions"
+  },
+  "admin.excel.title": {
+    "az": "Excel-dən əlavə et",
+    "ru": "Импорт из Excel",
+    "en": "Import from Excel"
+  },
+  "admin.excel.drop": {
+    "az": ".xlsx faylını buraya sürükləyin və ya seçin.",
+    "ru": "Перетащите сюда файл .xlsx или выберите его.",
+    "en": "Drop an .xlsx file here or choose one."
+  },
+  "admin.excel.choose": {
+    "az": "Excel faylı seç",
+    "ru": "Выбрать файл Excel",
+    "en": "Choose Excel file"
+  },
+  "admin.excel.download": {
+    "az": "Nümunə Excel-i yüklə",
+    "ru": "Скачать образец Excel",
+    "en": "Download sample Excel file"
+  },
+  "admin.excel.preview": {
+    "az": "İdxal önizləməsi",
+    "ru": "Предпросмотр импорта",
+    "en": "Import preview"
+  },
+  "admin.excel.row": {
+    "az": "Sətir",
+    "ru": "Строка",
+    "en": "Row"
+  },
+  "admin.excel.field": {
+    "az": "Sütun",
+    "ru": "Столбец",
+    "en": "Column"
+  },
+  "admin.excel.status": {
+    "az": "Vəziyyət",
+    "ru": "Статус",
+    "en": "Status"
+  },
+  "admin.excel.valid": {
+    "az": "Əlavə etməyə hazırdır",
+    "ru": "Готово к добавлению",
+    "en": "Ready to add"
+  },
+  "admin.excel.add": {
+    "az": "Əlavə et",
+    "ru": "Добавить",
+    "en": "Add"
+  },
+  "admin.excel.reading": {
+    "az": "Excel faylı oxunur…",
+    "ru": "Читаем файл Excel…",
+    "en": "Reading Excel file…"
+  },
+  "admin.excel.empty": {
+    "az": "Excel faylında məhsul sətri yoxdur.",
+    "ru": "В файле Excel нет строк с товарами.",
+    "en": "The Excel file has no product rows."
+  },
+  "admin.excel.readError": {
+    "az": "Excel faylı oxunmadı. .xlsx faylını yoxlayın.",
+    "ru": "Не удалось прочитать файл Excel. Проверьте файл .xlsx.",
+    "en": "The Excel file could not be read. Check the .xlsx file."
+  },
+  "admin.excel.errorCount": {
+    "az": "Xəta sayı — {count}",
+    "ru": "Ошибок — {count}",
+    "en": "Errors found — {count}"
+  },
+  "admin.excel.readyCount": {
+    "az": "Hazır məhsul sayı — {count}",
+    "ru": "Готово к добавлению — {count}",
+    "en": "Products ready — {count}"
+  },
+  "admin.excel.success": {
+    "az": "Əlavə edilən məhsul sayı — {count}",
+    "ru": "Добавлено товаров — {count}",
+    "en": "Products added — {count}"
+  },
+  "validation.required": {
+    "az": "Bu xana boş qala bilməz.",
+    "ru": "Заполните это поле.",
+    "en": "Fill in this field."
+  },
+  "validation.invalid_slug": {
+    "az": "Kiçik latın hərfləri, rəqəmlər və tək defislərdən istifadə edin.",
+    "ru": "Используйте строчные латинские буквы, цифры и одиночные дефисы.",
+    "en": "Use lowercase Latin letters, digits and single hyphens."
+  },
+  "validation.duplicate_id": {
+    "az": "Bu kod artıq istifadə olunur.",
+    "ru": "Этот код уже используется.",
+    "en": "This ID is already in use."
+  },
+  "validation.immutable_id": {
+    "az": "Məhsulun kodunu dəyişmək olmur.",
+    "ru": "Код товара нельзя изменить.",
+    "en": "The product ID cannot be changed."
+  },
+  "validation.not_found": {
+    "az": "Bu məhsul tapılmadı.",
+    "ru": "Товар не найден.",
+    "en": "This product could not be found."
+  },
+  "validation.invalid_category": {
+    "az": "Siyahıdakı kateqoriya kodlarından birini yazın.",
+    "ru": "Укажите код категории из списка.",
+    "en": "Enter a category ID from the list."
+  },
+  "validation.invalid_number": {
+    "az": "Sıfırdan böyük rəqəm yazın.",
+    "ru": "Введите число больше нуля.",
+    "en": "Enter a number greater than zero."
+  },
+  "validation.invalid_surface": {
+    "az": "Siyahıdakı səth kodlarından birini yazın.",
+    "ru": "Укажите код поверхности из списка.",
+    "en": "Enter a finish ID from the list."
+  },
+  "validation.invalid_color": {
+    "az": "Siyahıdakı rəng kodlarından istifadə edin.",
+    "ru": "Используйте коды цветов из списка.",
+    "en": "Use colour IDs from the list."
+  },
+  "validation.invalid_use": {
+    "az": "Siyahıdakı istifadə yeri kodlarından istifadə edin.",
+    "ru": "Используйте коды применения из списка.",
+    "en": "Use application IDs from the list."
+  },
+  "validation.invalid_image": {
+    "az": "Şəklin fayl adını və ya img/tiles/ qovluğundakı yolunu yazın.",
+    "ru": "Укажите имя файла изображения или его путь в папке img/tiles/.",
+    "en": "Enter an image filename or its path within img/tiles/."
+  },
+  "validation.inconsistent_coverage": {
+    "az": "Qutunun sahəsi bir parçanın sahəsinin tam misli olmalıdır.",
+    "ru": "Площадь коробки должна быть кратна площади одной плитки.",
+    "en": "Box coverage must be a whole multiple of one tile's area."
+  },
+  "validation.invalid_headers": {
+    "az": "Sütun başlıqlarını nümunə Excel faylı ilə tutuşdurun.",
+    "ru": "Сверьте заголовки столбцов с образцом Excel.",
+    "en": "Check the column headers against the sample Excel file."
+  },
+  "footer.note": {
+    "az": "Bu, Twenion tərəfindən hazırlanmış nümunə saytdır. Məhsullar və məlumatlar nümunədir.",
+    "ru": "Этот демонстрационный сайт создан Twenion. Товары и сведения о них приведены для примера.",
+    "en": "This demo site was created by Twenion. The products and information are for illustration."
+  }
+}

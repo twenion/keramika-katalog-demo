@@ -1,0 +1,824 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "id": "doseme",
+      "name": {
+        "az": "Döşəmə kafeli",
+        "ru": "Напольная плитка",
+        "en": "Floor tiles"
+      }
+    },
+    {
+      "id": "divar",
+      "name": {
+        "az": "Divar kafeli",
+        "ru": "Настенная плитка",
+        "en": "Wall tiles"
+      }
+    },
+    {
+      "id": "metlax",
+      "name": {
+        "az": "Metlax",
+        "ru": "Цементная плитка",
+        "en": "Cement tiles"
+      }
+    },
+    {
+      "id": "mozaika",
+      "name": {
+        "az": "Mozaika",
+        "ru": "Мозаика",
+        "en": "Mosaics"
+      }
+    }
+  ],
+  "facets": {
+    "surface": [
+      {
+        "id": "matt",
+        "name": {
+          "az": "Mat",
+          "ru": "Матовая",
+          "en": "Matte"
+        }
+      },
+      {
+        "id": "parlaq",
+        "name": {
+          "az": "Parlaq",
+          "ru": "Глянцевая",
+          "en": "Glossy"
+        }
+      },
+      {
+        "id": "satin",
+        "name": {
+          "az": "Satin",
+          "ru": "Сатиновая",
+          "en": "Satin"
+        }
+      },
+      {
+        "id": "relyef",
+        "name": {
+          "az": "Relyefli",
+          "ru": "Рельефная",
+          "en": "Textured"
+        }
+      }
+    ],
+    "color": [
+      {
+        "id": "ag",
+        "hex": "#eeeae2",
+        "name": {
+          "az": "Ağ",
+          "ru": "Белый",
+          "en": "White"
+        }
+      },
+      {
+        "id": "bej",
+        "hex": "#cbb79b",
+        "name": {
+          "az": "Bej",
+          "ru": "Бежевый",
+          "en": "Beige"
+        }
+      },
+      {
+        "id": "boz",
+        "hex": "#8c8780",
+        "name": {
+          "az": "Boz",
+          "ru": "Серый",
+          "en": "Grey"
+        }
+      },
+      {
+        "id": "qara",
+        "hex": "#242321",
+        "name": {
+          "az": "Qara",
+          "ru": "Чёрный",
+          "en": "Black"
+        }
+      },
+      {
+        "id": "yasil",
+        "hex": "#69724b",
+        "name": {
+          "az": "Yaşıl",
+          "ru": "Зелёный",
+          "en": "Green"
+        }
+      },
+      {
+        "id": "mavi",
+        "hex": "#314c65",
+        "name": {
+          "az": "Mavi",
+          "ru": "Синий",
+          "en": "Blue"
+        }
+      },
+      {
+        "id": "terrakota",
+        "hex": "#ad634c",
+        "name": {
+          "az": "Terrakota",
+          "ru": "Терракотовый",
+          "en": "Terracotta"
+        }
+      },
+      {
+        "id": "coxrengli",
+        "hex": "#9a8267",
+        "name": {
+          "az": "Çoxrəngli",
+          "ru": "Разноцветный",
+          "en": "Multicolour"
+        }
+      }
+    ],
+    "use": [
+      {
+        "id": "doseme",
+        "name": {
+          "az": "Döşəmə",
+          "ru": "Пол",
+          "en": "Floor"
+        }
+      },
+      {
+        "id": "divar",
+        "name": {
+          "az": "Divar",
+          "ru": "Стена",
+          "en": "Wall"
+        }
+      },
+      {
+        "id": "hamam",
+        "name": {
+          "az": "Hamam",
+          "ru": "Ванная",
+          "en": "Bathroom"
+        }
+      },
+      {
+        "id": "metbex",
+        "name": {
+          "az": "Mətbəx",
+          "ru": "Кухня",
+          "en": "Kitchen"
+        }
+      },
+      {
+        "id": "col",
+        "name": {
+          "az": "Açıq məkan",
+          "ru": "Улица и терраса",
+          "en": "Outdoor and terrace"
+        }
+      }
+    ]
+  },
+  "products": [
+    {
+      "id": "qobustan-boz",
+      "category": "doseme",
+      "name": {
+        "az": "Qobustan Boz",
+        "ru": "Гобустан Серый",
+        "en": "Gobustan Grey"
+      },
+      "size": {
+        "w": 60,
+        "h": 120,
+        "unit": "cm"
+      },
+      "thickness_mm": 9,
+      "surface": "matt",
+      "colors": [
+        "boz"
+      ],
+      "use": [
+        "doseme",
+        "divar",
+        "hamam",
+        "metbex"
+      ],
+      "material": {
+        "az": "Porselen qranit",
+        "ru": "Керамогранит",
+        "en": "Porcelain stoneware"
+      },
+      "pieces_per_box": 2,
+      "m2_per_box": 1.44,
+      "image": "img/tiles/qobustan-boz.webp",
+      "description": {
+        "az": "İlıq boz fonda əhəngdaşına xas xırda izlər görünür. İri ölçüdə döşənəndə daş naxışı geniş səthdə daha aydın seçilir.",
+        "ru": "На тёплом сером фоне проступают мелкие вкрапления, характерные для известняка. На большой площади крупные плитки хорошо раскрывают рисунок камня.",
+        "en": "Fine, fossil-like flecks show through the warm grey limestone effect. The large format gives the stone pattern room to spread across a floor."
+      },
+      "featured": true
+    },
+    {
+      "id": "xezer-mermer",
+      "category": "doseme",
+      "name": {
+        "az": "Xəzər Mərmər",
+        "ru": "Хазар Мрамор",
+        "en": "Khazar Marble"
+      },
+      "size": {
+        "w": 60,
+        "h": 120,
+        "unit": "cm"
+      },
+      "thickness_mm": 10,
+      "surface": "parlaq",
+      "colors": [
+        "ag",
+        "bej",
+        "boz"
+      ],
+      "use": [
+        "doseme",
+        "divar",
+        "metbex"
+      ],
+      "material": {
+        "az": "Porselen qranit",
+        "ru": "Керамогранит",
+        "en": "Porcelain stoneware"
+      },
+      "pieces_per_box": 2,
+      "m2_per_box": 1.44,
+      "image": "img/tiles/xezer-mermer.webp",
+      "description": {
+        "az": "Süd rənginə çalan ağ fondan nazik boz damarlar keçir. İşıq düşdükcə parlaq səthin üzərində naxışın açıq və tünd yerləri seçilir.",
+        "ru": "По молочно-белому фону проходят тонкие серые прожилки. При боковом свете глянец подчёркивает переходы от светлых участков к тёмным.",
+        "en": "Fine grey veins run through a creamy white marble pattern. Light catching the polished surface brings out the shifts in tone."
+      },
+      "featured": true
+    },
+    {
+      "id": "kul-beton",
+      "category": "doseme",
+      "name": {
+        "az": "Kül Beton",
+        "ru": "Пепельный бетон",
+        "en": "Ash Concrete"
+      },
+      "size": {
+        "w": 60,
+        "h": 60,
+        "unit": "cm"
+      },
+      "thickness_mm": 10,
+      "surface": "matt",
+      "colors": [
+        "boz"
+      ],
+      "use": [
+        "doseme",
+        "divar",
+        "hamam",
+        "metbex",
+        "col"
+      ],
+      "material": {
+        "az": "Porselen qranit",
+        "ru": "Керамогранит",
+        "en": "Porcelain stoneware"
+      },
+      "pieces_per_box": 4,
+      "m2_per_box": 1.44,
+      "image": "img/tiles/kul-beton.webp",
+      "description": {
+        "az": "Kül rəngli beton naxışında mala izinə bənzər incə cizgilər var. Kvadrat parçalar birləşəndə sakit, yüngül dalğalı bir fon alınır.",
+        "ru": "На пепельно-сером фоне видны лёгкие следы, похожие на мазки кельмы. В укладке квадратные плитки образуют спокойный рисунок с мягкими переходами тона.",
+        "en": "Subtle trowel marks break up the ash-grey concrete pattern. Laid together, the square tiles create a quiet surface with slight shifts in tone."
+      },
+      "featured": false
+    },
+    {
+      "id": "palid-taxta",
+      "category": "doseme",
+      "name": {
+        "az": "Palıd",
+        "ru": "Дуб",
+        "en": "Oak"
+      },
+      "size": {
+        "w": 20,
+        "h": 120,
+        "unit": "cm"
+      },
+      "thickness_mm": 9,
+      "surface": "matt",
+      "colors": [
+        "bej"
+      ],
+      "use": [
+        "doseme",
+        "divar",
+        "hamam",
+        "metbex"
+      ],
+      "material": {
+        "az": "Porselen qranit",
+        "ru": "Керамогранит",
+        "en": "Porcelain stoneware"
+      },
+      "pieces_per_box": 5,
+      "m2_per_box": 1.2,
+      "image": "img/tiles/palid-taxta.webp",
+      "description": {
+        "az": "Uzunsov kafelin üzündə palıdın lifləri və xırda düyünləri seçilir. Parçaları yarım sürüşdürüb düzdükdə taxta döşəmə görünüşü alınır.",
+        "ru": "На длинной плитке видны волокна дуба и небольшие сучки. Укладка со смещением напоминает дощатый пол.",
+        "en": "Oak grain and small knots run along each plank. An offset layout gives the tiles the rhythm of a timber floor."
+      },
+      "featured": false
+    },
+    {
+      "id": "terrazzo-abseron",
+      "category": "doseme",
+      "name": {
+        "az": "Abşeron Terrazzo",
+        "ru": "Апшерон Терраццо",
+        "en": "Absheron Terrazzo"
+      },
+      "size": {
+        "w": 60,
+        "h": 60,
+        "unit": "cm"
+      },
+      "thickness_mm": 9,
+      "surface": "parlaq",
+      "colors": [
+        "bej",
+        "terrakota",
+        "boz",
+        "qara",
+        "coxrengli"
+      ],
+      "use": [
+        "doseme",
+        "divar",
+        "metbex"
+      ],
+      "material": {
+        "az": "Porselen qranit",
+        "ru": "Керамогранит",
+        "en": "Porcelain stoneware"
+      },
+      "pieces_per_box": 4,
+      "m2_per_box": 1.44,
+      "image": "img/tiles/terrazzo-abseron.webp",
+      "description": {
+        "az": "Krem rəngli fonda pas tonunda, boz və qara qırıntılar səpələnib. İri və xırda dənələr yanaşı düşdüyündən naxış hər kafeldə bir az fərqli görünür.",
+        "ru": "По кремовому фону рассыпаны рыжеватые, серые и чёрные вкрапления. Крупные и мелкие фрагменты складываются в слегка различающийся рисунок на каждой плитке.",
+        "en": "Rust, grey and black chips are scattered across a cream ground. The mix of large and small fragments gives each tile a slightly different pattern."
+      },
+      "featured": false
+    },
+    {
+      "id": "zeytun",
+      "category": "divar",
+      "name": {
+        "az": "Zeytun",
+        "ru": "Олива",
+        "en": "Olive"
+      },
+      "size": {
+        "w": 7.5,
+        "h": 30,
+        "unit": "cm"
+      },
+      "thickness_mm": 8,
+      "surface": "parlaq",
+      "colors": [
+        "yasil"
+      ],
+      "use": [
+        "divar",
+        "hamam",
+        "metbex"
+      ],
+      "material": {
+        "az": "Keramika",
+        "ru": "Керамика",
+        "en": "Ceramic"
+      },
+      "pieces_per_box": 44,
+      "m2_per_box": 0.99,
+      "image": "img/tiles/zeytun.webp",
+      "description": {
+        "az": "Zeytun yaşılı mina kafelin üzündə gah açıq, gah tünd görünür. Bir az dalğalı səth işığı hissə-hissə tutur və əl işi zillici xatırladır.",
+        "ru": "Оливковая глазурь переливается от светлого к тёмному. Слегка волнистая поверхность по-разному ловит свет, напоминая плитку зеллидж ручной работы.",
+        "en": "The olive glaze varies from light to dark across the tile. Its gently uneven surface catches the light in patches, recalling handmade zellige."
+      },
+      "featured": true
+    },
+    {
+      "id": "sedef",
+      "category": "divar",
+      "name": {
+        "az": "Sədəf",
+        "ru": "Перламутр",
+        "en": "Mother of Pearl"
+      },
+      "size": {
+        "w": 30,
+        "h": 90,
+        "unit": "cm"
+      },
+      "thickness_mm": 10,
+      "surface": "relyef",
+      "colors": [
+        "ag"
+      ],
+      "use": [
+        "divar",
+        "hamam"
+      ],
+      "material": {
+        "az": "Keramika",
+        "ru": "Керамика",
+        "en": "Ceramic"
+      },
+      "pieces_per_box": 4,
+      "m2_per_box": 1.08,
+      "image": "img/tiles/sedef.webp",
+      "description": {
+        "az": "İlıq ağ səthin üzərində alçaq dalğalar uzanır. Yan tərəfdən işıq düşəndə dalğaların kölgəsi relyefi üzə çıxarır.",
+        "ru": "По тёплой белой поверхности идут неглубокие волны. При боковом освещении рельеф становится заметнее благодаря тонким теням.",
+        "en": "Low waves run across the warm white surface. Light from the side reveals the relief through fine shadows."
+      },
+      "featured": false
+    },
+    {
+      "id": "gil",
+      "category": "divar",
+      "name": {
+        "az": "Gil",
+        "ru": "Глина",
+        "en": "Clay"
+      },
+      "size": {
+        "w": 10,
+        "h": 10,
+        "unit": "cm"
+      },
+      "thickness_mm": 8,
+      "surface": "matt",
+      "colors": [
+        "terrakota"
+      ],
+      "use": [
+        "divar",
+        "hamam",
+        "metbex"
+      ],
+      "material": {
+        "az": "Keramika",
+        "ru": "Керамика",
+        "en": "Ceramic"
+      },
+      "pieces_per_box": 50,
+      "m2_per_box": 0.5,
+      "image": "img/tiles/gil.webp",
+      "description": {
+        "az": "Bişmiş gil rəngində olan bu xırda kvadratların tonu bir-birindən azca fərqlənir. Aralarına açıq rəngli fuga vuranda hər parça ayrıca görünür.",
+        "ru": "Небольшие квадраты цвета обожжённой глины чуть отличаются по тону. Светлая затирка подчёркивает границы каждой плитки.",
+        "en": "These small squares vary subtly in their fired-clay colour. Pale grout picks out the outline of each tile."
+      },
+      "featured": false
+    },
+    {
+      "id": "gece",
+      "category": "divar",
+      "name": {
+        "az": "Gecə",
+        "ru": "Ночь",
+        "en": "Night"
+      },
+      "size": {
+        "w": 7.5,
+        "h": 15,
+        "unit": "cm"
+      },
+      "thickness_mm": 8,
+      "surface": "parlaq",
+      "colors": [
+        "mavi"
+      ],
+      "use": [
+        "divar",
+        "hamam",
+        "metbex"
+      ],
+      "material": {
+        "az": "Keramika",
+        "ru": "Керамика",
+        "en": "Ceramic"
+      },
+      "pieces_per_box": 88,
+      "m2_per_box": 0.99,
+      "image": "img/tiles/gece.webp",
+      "description": {
+        "az": "Dərin lacivərd rəng işıq düşməyən yerdə qaraya çalır. Kiçik düzbucaqlıları sıra ilə və ya şaşırtmalı düzmək olur.",
+        "ru": "Глубокий синий цвет в тени кажется почти чёрным. Небольшие прямоугольники можно уложить ровными рядами или со смещением.",
+        "en": "The deep navy glaze looks almost black in shade. The small rectangles can be laid in straight rows or staggered like brickwork."
+      },
+      "featured": false
+    },
+    {
+      "id": "buta",
+      "category": "metlax",
+      "name": {
+        "az": "Buta",
+        "ru": "Бута",
+        "en": "Buta"
+      },
+      "size": {
+        "w": 20,
+        "h": 20,
+        "unit": "cm"
+      },
+      "thickness_mm": 16,
+      "surface": "matt",
+      "colors": [
+        "bej",
+        "mavi",
+        "coxrengli"
+      ],
+      "use": [
+        "doseme",
+        "divar",
+        "metbex"
+      ],
+      "material": {
+        "az": "Sement",
+        "ru": "Цемент",
+        "en": "Cement"
+      },
+      "pieces_per_box": 12,
+      "m2_per_box": 0.48,
+      "image": "img/tiles/buta.webp",
+      "description": {
+        "az": "Krem rəngli fonda tünd göy butalar növbə ilə sağa-sola baxır. Parçalar yanaşı düzüləndə naxış döşəmə boyunca davam edir.",
+        "ru": "На кремовом фоне тёмно-синие бута поочерёдно обращены вправо и влево. При укладке мотив складывается в непрерывный узор.",
+        "en": "Indigo buta motifs alternate in direction on a cream ground. Set side by side, the tiles carry the pattern across the floor."
+      },
+      "featured": true
+    },
+    {
+      "id": "sebeke",
+      "category": "metlax",
+      "name": {
+        "az": "Şəbəkə",
+        "ru": "Шебеке",
+        "en": "Shebeke"
+      },
+      "size": {
+        "w": 20,
+        "h": 20,
+        "unit": "cm"
+      },
+      "thickness_mm": 16,
+      "surface": "matt",
+      "colors": [
+        "bej",
+        "qara",
+        "terrakota",
+        "coxrengli"
+      ],
+      "use": [
+        "doseme",
+        "divar",
+        "metbex"
+      ],
+      "material": {
+        "az": "Sement",
+        "ru": "Цемент",
+        "en": "Cement"
+      },
+      "pieces_per_box": 12,
+      "m2_per_box": 0.48,
+      "image": "img/tiles/sebeke.webp",
+      "description": {
+        "az": "Oxra, kömür və krem rəngli xətlər şəbəkə naxışı yaradır. Dörd parça bir yerə gələndə xətlər ortada kəsişir.",
+        "ru": "Охристые, угольные и кремовые линии образуют решётку, напоминающую шебеке. Когда четыре плитки сходятся, линии пересекаются в центре.",
+        "en": "Ochre, charcoal and cream lines form a lattice inspired by shebeke. Where four tiles meet, the lines cross at the centre."
+      },
+      "featured": false
+    },
+    {
+      "id": "nar",
+      "category": "metlax",
+      "name": {
+        "az": "Nar",
+        "ru": "Гранат",
+        "en": "Pomegranate"
+      },
+      "size": {
+        "w": 20,
+        "h": 20,
+        "unit": "cm"
+      },
+      "thickness_mm": 16,
+      "surface": "matt",
+      "colors": [
+        "terrakota",
+        "yasil",
+        "bej",
+        "coxrengli"
+      ],
+      "use": [
+        "doseme",
+        "divar",
+        "metbex"
+      ],
+      "material": {
+        "az": "Sement",
+        "ru": "Цемент",
+        "en": "Cement"
+      },
+      "pieces_per_box": 12,
+      "m2_per_box": 0.48,
+      "image": "img/tiles/nar.webp",
+      "description": {
+        "az": "Açıq krem fonda nar dənələri kərpic rəngi ilə işlənib. Bozumtul yaşıl yarpaqlar narların arasındakı boşluqları doldurur.",
+        "ru": "На светлом кремовом фоне зёрна граната выделены кирпичным цветом. Серо-зелёные листья заполняют промежутки между плодами.",
+        "en": "Brick-coloured pomegranate seeds stand out against a pale cream ground. Sage-green leaves fill the gaps between the fruits."
+      },
+      "featured": false
+    },
+    {
+      "id": "ulduz",
+      "category": "metlax",
+      "name": {
+        "az": "Ulduz",
+        "ru": "Звезда",
+        "en": "Star"
+      },
+      "size": {
+        "w": 20,
+        "h": 20,
+        "unit": "cm"
+      },
+      "thickness_mm": 16,
+      "surface": "matt",
+      "colors": [
+        "qara",
+        "ag",
+        "boz",
+        "coxrengli"
+      ],
+      "use": [
+        "doseme",
+        "divar",
+        "metbex"
+      ],
+      "material": {
+        "az": "Sement",
+        "ru": "Цемент",
+        "en": "Cement"
+      },
+      "pieces_per_box": 12,
+      "m2_per_box": 0.48,
+      "image": "img/tiles/ulduz.webp",
+      "description": {
+        "az": "Səkkizguşəli ulduz qara, ağ və boz sahələrdən yığılır. Kvadratları eyni istiqamətdə düzdükdə ulduzların arası da ayrıca naxışa çevrilir.",
+        "ru": "Восьмиконечная звезда складывается из чёрных, белых и серых участков. Если уложить квадраты в одном направлении, между звёздами появится второй узор.",
+        "en": "The eight-pointed star is drawn in black, white and grey. Lay the squares in the same orientation and a second pattern appears between the stars."
+      },
+      "featured": false
+    },
+    {
+      "id": "kur",
+      "category": "mozaika",
+      "name": {
+        "az": "Kür",
+        "ru": "Кура",
+        "en": "Kura"
+      },
+      "size": {
+        "w": 30,
+        "h": 30,
+        "unit": "cm"
+      },
+      "thickness_mm": 6,
+      "surface": "parlaq",
+      "colors": [
+        "mavi",
+        "yasil",
+        "coxrengli"
+      ],
+      "use": [
+        "divar",
+        "hamam",
+        "metbex"
+      ],
+      "material": {
+        "az": "Şüşə",
+        "ru": "Стекло",
+        "en": "Glass"
+      },
+      "pieces_per_box": 10,
+      "m2_per_box": 0.9,
+      "image": "img/tiles/kur.webp",
+      "description": {
+        "az": "Xırda altıbucaqlı şüşə parçalarında göy və yaşıl çalarlar bir-birinə qarışır. Parçalar 30 × 30 sm ölçülü tor üzərində düzülüb.",
+        "ru": "В мелких стеклянных шестиугольниках смешиваются синие и зелёные оттенки. Элементы собраны на сетке размером 30 × 30 см.",
+        "en": "Blue and green tones mingle across the small glass hexagons. The pieces are mounted on a 30 × 30 cm mesh sheet."
+      },
+      "featured": true
+    },
+    {
+      "id": "qum",
+      "category": "mozaika",
+      "name": {
+        "az": "Qum",
+        "ru": "Песок",
+        "en": "Sand"
+      },
+      "size": {
+        "w": 30,
+        "h": 30,
+        "unit": "cm"
+      },
+      "thickness_mm": 7,
+      "surface": "matt",
+      "colors": [
+        "bej"
+      ],
+      "use": [
+        "doseme",
+        "divar",
+        "hamam",
+        "metbex"
+      ],
+      "material": {
+        "az": "Porselen qranit",
+        "ru": "Керамогранит",
+        "en": "Porcelain stoneware"
+      },
+      "pieces_per_box": 11,
+      "m2_per_box": 0.99,
+      "image": "img/tiles/qum.webp",
+      "description": {
+        "az": "Qum rəngli xırda dairələr tor üzərində sıx düzülüb. Açıq fuga ilə rənglər bir-birinə qarışır, tünd fuga ilə dairələr daha aydın görünür.",
+        "ru": "Мелкие кружки песочного цвета плотно расположены на сетке. Со светлой затиркой тона сливаются, а тёмная подчёркивает форму кружков.",
+        "en": "Small, sand-coloured rounds sit close together on the mesh sheet. Pale grout blends into the pattern, while darker grout defines each circle."
+      },
+      "featured": false
+    },
+    {
+      "id": "qara-mermer",
+      "category": "mozaika",
+      "name": {
+        "az": "Qara Mərmər",
+        "ru": "Чёрный мрамор",
+        "en": "Black Marble"
+      },
+      "size": {
+        "w": 30,
+        "h": 30,
+        "unit": "cm"
+      },
+      "thickness_mm": 9,
+      "surface": "parlaq",
+      "colors": [
+        "qara",
+        "ag"
+      ],
+      "use": [
+        "doseme",
+        "divar",
+        "hamam",
+        "metbex"
+      ],
+      "material": {
+        "az": "Təbii mərmər",
+        "ru": "Натуральный мрамор",
+        "en": "Natural marble"
+      },
+      "pieces_per_box": 10,
+      "m2_per_box": 0.9,
+      "image": "img/tiles/qara-mermer.webp",
+      "description": {
+        "az": "Qara mərmər zolaqlarından incə ağ damarlar keçir. Zolaqlar siyənək naxışı ilə tor üzərinə düzülüb.",
+        "ru": "Тонкие белые прожилки проходят по полоскам чёрного мрамора. Полоски собраны на сетке в рисунок «ёлочка».",
+        "en": "Fine white veins cross the black marble strips. The strips come mounted on mesh in a herringbone pattern."
+      },
+      "featured": false
+    }
+  ]
+}
