@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://example.az/</loc></url>
-  <url><loc>https://example.az/katalog/</loc></url>
-  <url><loc>https://example.az/mehsul/</loc></url>
-  <url><loc>https://example.az/admin/</loc></url>
+  <url><loc>https://twenion.github.io/keramika-katalog-demo/</loc></url>
+  <url><loc>https://twenion.github.io/keramika-katalog-demo/katalog/</loc></url>
+  <url><loc>https://twenion.github.io/keramika-katalog-demo/mehsul/</loc></url>
+  <url><loc>https://twenion.github.io/keramika-katalog-demo/admin/</loc></url>
 </urlset>
